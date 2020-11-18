@@ -1,6 +1,6 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2016 The Bitcoin developers
-// Copyright (c) 2019 The WYTF Foundation
+// Copyright (c) 2016 The Chipcoin developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 #ifndef BITCOIN_WALLETDB_H
@@ -22,6 +22,23 @@ enum DBErrors
     DB_TOO_NEW,
     DB_LOAD_FAIL,
     DB_NEED_REWRITE
+};
+
+class CLockedCoins
+{
+public:
+	//locked coins use its own datatype to make read and write serialization handling a bit easier. Also in case we want to add more params in future
+	std::vector<COutPoint> vLockedCoins; //coins that are 'locked' to prevent staking
+
+	CLockedCoins()
+	{
+		vLockedCoins.clear();
+	}
+
+	IMPLEMENT_SERIALIZE
+	(
+		READWRITE(vLockedCoins);
+	)
 };
 
 class CKeyMetadata
@@ -162,6 +179,17 @@ public:
         nWalletDBUpdated++;
         return Erase(std::make_pair(std::string("pool"), nPool));
     }
+
+	bool WriteLockedCoins(const CLockedCoins lockedcoins)
+	{
+		nWalletDBUpdated++;
+		return Write(std::string("lockedcoins"), lockedcoins, true);
+	}
+
+	bool ReadLockedCoins(CLockedCoins& lockedcoins)
+	{
+		return Read(std::string("lockedcoins"), lockedcoins);
+	}
 
     // Settings are no longer stored in wallet.dat; these are
     // used only for backwards compatibility:

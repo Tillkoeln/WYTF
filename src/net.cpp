@@ -1,6 +1,6 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2016 The Bitcoin developers
-// Copyright (c) 2019 The WYTF Foundation
+// Copyright (c) 2016 The Chipcoin developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -374,7 +374,7 @@ bool GetMyExternalIP(CNetAddr& ipRet)
 
             pszGet = "GET / HTTP/1.1\r\n"
                      "Host: checkip.dyndns.org\r\n"
-                     "User-Agent: WYTF\r\n"
+                     "User-Agent: Chipcoin\r\n"
                      "Connection: close\r\n"
                      "\r\n";
 
@@ -410,7 +410,7 @@ bool GetMyExternalIP(CNetAddr& ipRet)
 void ThreadGetMyExternalIP(void* parg)
 {
     // Make this thread recognisable as the external IP detection thread
-    RenameThread("WYTF-ext-ip");
+    RenameThread("Chipcoin-ext-ip");
 
     CNetAddr addrLocalHost;
     if (GetMyExternalIP(addrLocalHost))
@@ -733,7 +733,7 @@ void SocketSendData(CNode *pnode)
 void ThreadSocketHandler(void* parg)
 {
     // Make this thread recognisable as the networking thread
-    RenameThread("WYTF-net");
+    RenameThread("Chipcoin-net");
 
     try
     {
@@ -1063,7 +1063,7 @@ void ThreadSocketHandler2(void* parg)
 void ThreadMapPort(void* parg)
 {
     // Make this thread recognisable as the UPnP thread
-    RenameThread("WYTF-UPnP");
+    RenameThread("Chipcoin-UPnP");
 
     try
     {
@@ -1128,7 +1128,7 @@ void ThreadMapPort2(void* parg)
             }
         }
 
-        string strDesc = "WYTF " + FormatFullVersion();
+        string strDesc = "Chipcoin " + FormatFullVersion();
 #ifndef UPNPDISCOVER_SUCCESS
         /* miniupnpc 1.5 */
         r = UPNP_AddPortMapping(urls.controlURL, data.first.servicetype,
@@ -1210,14 +1210,14 @@ void MapPort()
 // The first name is used as information source for addrman.
 // The second name should resolve to a list of seed addresses.
 static const char *strDNSSeed[][2] = {
-    	{"seed", "seed.wytf.co"},
-		{"seed2", "seed2.wytf.co"},
+    	{"seed", "seed.chipcoin.info"},
+		{"seed2", "seed2.chipcoin.info"},
 };
 
 void ThreadDNSAddressSeed(void* parg)
 {
     // Make this thread recognisable as the DNS seeding thread
-    RenameThread("WYTF-dnsseed");
+    RenameThread("Chipcoin-dnsseed");
 
     try
     {
@@ -1270,8 +1270,8 @@ void ThreadDNSAddressSeed2(void* parg)
 }
 
 unsigned int pnSeed[] =
-{
-0x423740B1, 0xCF7EA420,
+{        
+                     
 };
 
 void DumpAddresses()
@@ -1301,7 +1301,7 @@ void ThreadDumpAddress2(void* parg)
 void ThreadDumpAddress(void* parg)
 {
     // Make this thread recognisable as the address dumping thread
-    RenameThread("WYTF-adrdump");
+    RenameThread("Chipcoin-adrdump");
 
     try
     {
@@ -1316,7 +1316,7 @@ void ThreadDumpAddress(void* parg)
 void ThreadOpenConnections(void* parg)
 {
     // Make this thread recognisable as the connection opening thread
-    RenameThread("WYTF-opencon");
+    RenameThread("Chipcoin-opencon");
 
     try
     {
@@ -1497,7 +1497,7 @@ void ThreadOpenConnections2(void* parg)
 void ThreadOpenAddedConnections(void* parg)
 {
     // Make this thread recognisable as the connection opening thread
-    RenameThread("WYTF-opencon");
+    RenameThread("Chipcoin-opencon");
 
     try
     {
@@ -1628,7 +1628,7 @@ bool OpenNetworkConnection(const CAddress& addrConnect, CSemaphoreGrant *grantOu
 void ThreadMessageHandler(void* parg)
 {
     // Make this thread recognisable as the message handling thread
-    RenameThread("WYTF-msghand");
+    RenameThread("Chipcoin-msghand");
 
     try
     {
@@ -1794,7 +1794,7 @@ bool BindListenPort(const CService &addrBind, string& strError)
     {
         int nErr = WSAGetLastError();
         if (nErr == WSAEADDRINUSE)
-            strError = strprintf(_("Unable to bind to %s on this computer. WYTF is probably already running."), addrBind.ToString().c_str());
+            strError = strprintf(_("Unable to bind to %s on this computer. Chipcoin is probably already running."), addrBind.ToString().c_str());
         else
             strError = strprintf(_("Unable to bind to %s on this computer (bind returned error %d, %s)"), addrBind.ToString().c_str(), nErr, strerror(nErr));
         printf("%s\n", strError.c_str());
@@ -1875,7 +1875,7 @@ void static Discover()
 void StartNode(void* parg)
 {
     // Make this thread recognisable as the startup thread
-    RenameThread("WYTF-start");
+    RenameThread("Chipcoin-start");
 
     if (semOutbound == NULL) {
         // initialize semaphore

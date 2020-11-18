@@ -13,7 +13,7 @@
   <property name="windowTitle">
    <string>Send Coins</string>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout" stretch="0,1,0">
+  <layout class="QVBoxLayout" name="verticalLayout" stretch="0,0,1,0">
    <property name="bottomMargin">
     <number>8</number>
    </property>
@@ -39,13 +39,13 @@
      </property>
      <layout class="QVBoxLayout" name="verticalLayoutCoinControl2">
       <property name="spacing">
-       <number>5</number>
+       <number>6</number>
       </property>
       <property name="leftMargin">
        <number>0</number>
       </property>
       <property name="topMargin">
-       <number>0</number>
+       <number>2</number>
       </property>
       <property name="rightMargin">
        <number>0</number>
@@ -54,43 +54,95 @@
        <number>6</number>
       </property>
       <item>
-       <layout class="QVBoxLayout" name="verticalLayoutCoinControl" stretch="0,0,0,0,1,0">
+       <layout class="QVBoxLayout" name="verticalLayoutCoinControl" stretch="0,0,0,0,0,1,0">
         <property name="spacing">
          <number>0</number>
         </property>
         <property name="leftMargin">
-         <number>10</number>
+         <number>0</number>
         </property>
         <property name="topMargin">
-         <number>10</number>
+         <number>0</number>
         </property>
+        <item>
+         <widget class="QWidget" name="widget3" native="true">
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>38</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: #1C1C1F;</string>
+          </property>
+          <layout class="QHBoxLayout" name="horizontalLayout_4_1_2">
+           <property name="spacing">
+            <number>6</number>
+           </property>
+           <property name="leftMargin">
+            <number>9</number>
+           </property>
+           <property name="topMargin">
+            <number>9</number>
+           </property>
+           <property name="rightMargin">
+            <number>9</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="label_2">
+             <property name="minimumSize">
+              <size>
+               <width>16</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>16</width>
+               <height>16777215</height>
+              </size>
+             </property>
+             <property name="text">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/icons/coincontrol&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="label_5_1_2">
+             <property name="font">
+              <font>
+               <family>Open Sans, sans-serif</family>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">margin-top:2px;</string>
+             </property>
+             <property name="text">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:13px; font-weight:600; color:#eff0f1;&quot;&gt; Coin Control&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <spacer name="horizontalSpacer_2_1_2">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+          </layout>
+         </widget>
+        </item>
         <item>
          <layout class="QHBoxLayout" name="horizontalLayoutCoinControl1">
           <property name="bottomMargin">
            <number>15</number>
           </property>
-          <item>
-           <widget class="QLabel" name="labelCoinControlFeatures">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="font">
-             <font>
-              <weight>75</weight>
-              <bold>true</bold>
-             </font>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">font-weight:bold;</string>
-            </property>
-            <property name="text">
-             <string>Coin Control Features</string>
-            </property>
-           </widget>
-          </item>
          </layout>
         </item>
         <item>
@@ -107,7 +159,7 @@
              <string notr="true"/>
             </property>
             <property name="text">
-             <string>Inputs...</string>
+             <string>Select Input</string>
             </property>
            </widget>
           </item>
@@ -330,7 +382,7 @@
                   <enum>Qt::ActionsContextMenu</enum>
                  </property>
                  <property name="text">
-                  <string>0.00 WYTF</string>
+                  <string>0.00 CHIP</string>
                  </property>
                  <property name="textInteractionFlags">
                   <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
@@ -416,7 +468,7 @@
                   <enum>Qt::ActionsContextMenu</enum>
                  </property>
                  <property name="text">
-                  <string>0.00 WYTF</string>
+                  <string>0.00 CHIP</string>
                  </property>
                  <property name="textInteractionFlags">
                   <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
@@ -505,7 +557,7 @@
                   <enum>Qt::ActionsContextMenu</enum>
                  </property>
                  <property name="text">
-                  <string>0.00 WYTF</string>
+                  <string>0.00 CHIP</string>
                  </property>
                  <property name="textInteractionFlags">
                   <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
@@ -537,7 +589,7 @@
                   <enum>Qt::ActionsContextMenu</enum>
                  </property>
                  <property name="text">
-                  <string>0.00 WYTF</string>
+                  <string>0.00 CHIP</string>
                  </property>
                  <property name="textInteractionFlags">
                   <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
@@ -567,6 +619,9 @@
           </property>
           <item>
            <widget class="QCheckBox" name="returnChangeCheckBox">
+            <property name="styleSheet">
+             <string notr="true">background:transparent;background-color:transparent;border:0px;</string>
+            </property>
             <property name="text">
              <string>Return Change</string>
             </property>
@@ -574,6 +629,9 @@
           </item>
           <item>
            <widget class="QCheckBox" name="checkBoxCoinControlChange">
+            <property name="styleSheet">
+             <string notr="true">background:transparent;background-color:transparent;border:0px;</string>
+            </property>
             <property name="text">
              <string>Custom Change Address</string>
             </property>
@@ -625,15 +683,33 @@
            <enum>QLayout::SetDefaultConstraint</enum>
           </property>
           <property name="topMargin">
-           <number>5</number>
+           <number>9</number>
           </property>
           <property name="rightMargin">
            <number>5</number>
           </property>
           <item>
            <widget class="QCheckBox" name="splitBlockCheckBox">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="toolTip">
+             <string>The Staking Optimizer is used to split your coins in multiple outputs to optimize your staking performance</string>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">background:transparent;background-color:transparent;border:0px;margin-top:3px;</string>
+            </property>
             <property name="text">
-             <string>SplitBlock</string>
+             <string>Staking Optimizer</string>
             </property>
            </widget>
           </item>
@@ -642,8 +718,23 @@
             <property name="enabled">
              <bool>false</bool>
             </property>
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="mouseTracking">
+             <bool>false</bool>
+            </property>
             <property name="text">
-             <string># Of Blocks To Make:</string>
+             <string>Outputs:</string>
             </property>
            </widget>
           </item>
@@ -660,7 +751,7 @@
             </property>
             <property name="maximumSize">
              <size>
-              <width>100</width>
+              <width>160</width>
               <height>16777215</height>
              </size>
             </property>
@@ -671,8 +762,14 @@
             <property name="enabled">
              <bool>false</bool>
             </property>
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
             <property name="text">
-             <string>Block Size:</string>
+             <string>Size Per Output:</string>
             </property>
            </widget>
           </item>
@@ -682,7 +779,7 @@
              <bool>false</bool>
             </property>
             <property name="text">
-             <string>0.00 WYTF</string>
+             <string>0.00 CHIP</string>
             </property>
            </widget>
           </item>
@@ -707,6 +804,71 @@
     </widget>
    </item>
    <item>
+    <widget class="QWidget" name="widget321" native="true">
+     <property name="maximumSize">
+      <size>
+       <width>16777215</width>
+       <height>38</height>
+      </size>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: #1C1C1F;</string>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout_4_1_01">
+      <property name="spacing">
+       <number>6</number>
+      </property>
+      <item>
+       <widget class="QLabel" name="label_222">
+        <property name="minimumSize">
+         <size>
+          <width>16</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/icons/transaction&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_5_1_02">
+        <property name="font">
+         <font>
+          <family>Open Sans, sans-serif</family>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">margin-top:2px;</string>
+        </property>
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:13px; font-weight:600; color:#eff0f1;&quot;&gt; Create Transaction&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer_2_1_202">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
     <widget class="QScrollArea" name="scrollArea">
      <property name="widgetResizable">
       <bool>true</bool>
@@ -716,8 +878,8 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>834</width>
-        <height>158</height>
+        <width>830</width>
+        <height>80</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -803,6 +965,19 @@
       </widget>
      </item>
      <item>
+      <spacer name="horizontalSpacer_2">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
       <layout class="QHBoxLayout" name="horizontalLayout_2">
        <property name="spacing">
         <number>3</number>
@@ -816,7 +991,7 @@
           </sizepolicy>
          </property>
          <property name="text">
-          <string>Balance:</string>
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Spendable Chipcoin:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
          </property>
         </widget>
        </item>
@@ -832,7 +1007,7 @@
           <cursorShape>IBeamCursor</cursorShape>
          </property>
          <property name="text">
-          <string>123.456 WYTF</string>
+          <string>123.456 CHIP</string>
          </property>
          <property name="textInteractionFlags">
           <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
@@ -848,7 +1023,7 @@
        </property>
        <property name="sizeHint" stdset="0">
         <size>
-         <width>35</width>
+         <width>40</width>
          <height>20</height>
         </size>
        </property>

@@ -1,5 +1,5 @@
 // Copyright (c) 2009-2016 The Bitcoin developers
-// Copyright (c) 2019 The WYTF Foundation
+// Copyright (c) 2016 The Chipcoin developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -27,7 +27,7 @@ namespace Checkpoints
     //
     static MapCheckpoints mapCheckpoints =
         boost::assign::map_list_of
-		( 0, hashGenesisBlock )        
+        ( 0,      hashGenesisBlock )        
 		;
 
     // TestNet has no checkpoints
@@ -350,7 +350,7 @@ namespace Checkpoints
 }
 
 // ppcoin: sync-checkpoint master key
-const std::string CSyncCheckpoint::strMasterPubKey = "04cd1b45b062d4f2301e56aa79ee1101a3f558124bf8233793368584a6d523553de64823f562393c8b89d2e73b76ad963e0ca85b3347792e94276bbb327b24997e";
+const std::string CSyncCheckpoint::strMasterPubKey = "04288d959351632e3758b6c77dbc3d5f8581b37e77b895eaf8061b207b916d9db93bf935f000f7a24466f796d8b0bcef41f93fb8503a6ba41f46425a730cdc5cfa";
 
 std::string CSyncCheckpoint::strMasterPrivKey = "";
 

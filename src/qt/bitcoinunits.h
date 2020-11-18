@@ -41,6 +41,7 @@ public:
     //! Number of decimals left
     static int decimals(int unit);
     //! Format as string
+	static QString formatGrowth(int unit, qint64 amount, bool plussign=false);
     static QString format(int unit, qint64 amount, bool plussign=false);
     //! Format as string (with unit)
     static QString formatWithUnit(int unit, qint64 amount, bool plussign=false);

@@ -54,7 +54,7 @@ std::string getBlockMerkle(qint64 Height)
         return 0;
 
     CBlockIndex* pblockindex = mapBlockIndex[hash];
-    return pblockindex->hashMerkleRoot.ToString();//.substr(0,10).c_str();
+    return pblockindex->hashMerkleRoot.ToString();
 }
 
 qint64 getBlocknBits(qint64 Height)
@@ -151,7 +151,7 @@ std::string getOutputs(std::string txid)
 		str.append(CBitcoinAddress(address).ToString());
         str.append(": ");
         str.append(amount);
-        str.append(" WYTF");
+        str.append(" CHIP");
         str.append("\n");
     }
 
@@ -189,7 +189,7 @@ std::string getInputs(std::string txid)
         str.append(CBitcoinAddress(address).ToString());
         str.append(": ");
         str.append(amount);
-        str.append(" WYTF");
+        str.append(" CHIP");
         str.append("\n");
     }
 
@@ -275,16 +275,16 @@ void BlockBrowser::updateExplorer(bool block)
             ui->diffLabel->setText("PoW Block Difficulty:");
             ui->hashRateBox->setText(QString::number(GetPoWMHashPS(pindex), 'f', 3) + " MH/s");
         }
-            ui->moneySupplyBox->setText(QString::number(getMoneySupply(height), 'f', 6) + " WYTF");
+            ui->moneySupplyBox->setText(QString::number(getMoneySupply(height), 'f', 6) + " CHIP");
     } 
     
     else {
         std::string txid = ui->txBox->text().toUtf8().constData();
-        ui->valueBox->setText(QString::number(getTxTotalValue(txid), 'f', 6) + " WYTF"); 
+        ui->valueBox->setText(QString::number(getTxTotalValue(txid), 'f', 6) + " CHIP"); 
         ui->txID->setText(QString::fromUtf8(txid.c_str())); 
         ui->outputBox->setText(QString::fromUtf8(getOutputs(txid).c_str())); 
         ui->inputBox->setText(QString::fromUtf8(getInputs(txid).c_str())); 
-        ui->feesBox->setText(QString::number(getTxFees(txid), 'f', 6) + " WYTF"); 
+        ui->feesBox->setText(QString::number(getTxFees(txid), 'f', 6) + " CHIP"); 
     }
 }
 

@@ -1,6 +1,6 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2016 The Bitcoin developers
-// Copyright (c) 2019 The WYTF Foundation
+// Copyright (c) 2016 The Chipcoin developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 #ifndef BITCOIN_MAIN_H
@@ -23,27 +23,25 @@ class CBlockIndex;
 class CKeyItem;
 class CReserveKey;
 class COutPoint;
-
 class CAddress;
 class CInv;
 class CRequestTracker;
 class CNode;
 
-static const int LAST_POW_BLOCK = 10000; //
+static const int LAST_POW_BLOCK = 999999999; //
 
 static const unsigned int MAX_BLOCK_SIZE = 20000000;
 static const unsigned int MAX_BLOCK_SIZE_GEN = MAX_BLOCK_SIZE/2;
 static const unsigned int MAX_BLOCK_SIGOPS = MAX_BLOCK_SIZE/50;
 static const unsigned int MAX_ORPHAN_TRANSACTIONS = MAX_BLOCK_SIZE/100;
 static const unsigned int MAX_INV_SZ = 50000;
-static const int64_t MIN_TX_FEE = 1000;
+static const int64_t MIN_TX_FEE = 10000;
 static const int64_t MIN_RELAY_TX_FEE = MIN_TX_FEE;
-static const int64_t MAX_MONEY = 5000000 * COIN;
+static const int64_t MAX_MONEY = 50000000 * COIN; // max coins in a transaction. This is NOT the maximum supply. Chipcoin has ongoing PoS and PoW for decades to come, there is no maximum supply.
 static const int MODIFIER_INTERVAL_SWITCH = 1;
 
 inline bool MoneyRange(int64_t nValue) { return (nValue >= 0 && nValue <= MAX_MONEY); }
-// Threshold for nLockTime: below this value it is interpreted as block number, otherwise as UNIX timestamp.
-static const unsigned int LOCKTIME_THRESHOLD = 500000000; // Tue Nov  5 00:53:20 1985 UTC
+static const unsigned int LOCKTIME_THRESHOLD = 500000000;
 
 #ifdef USE_UPNP
 static const int fHaveUPnP = true;
@@ -51,11 +49,11 @@ static const int fHaveUPnP = true;
 static const int fHaveUPnP = false;
 #endif
 
-static const uint256 hashGenesisBlock("0x00000fc157f8fe048209d85daab0d0217c6981f2f8e9e7ae9aa892041d6f0384");
-static const uint256 hashGenesisBlockTestNet("0x0"); //Testnet comes later
+static const uint256 hashGenesisBlock("0x0000077138954d64f34ee2562600fc26626ebcf97c9407b1b36cc3349e331808");
+static const uint256 hashGenesisBlockTestNet("0x"); // No testnet required. We test new functions in a private network.
 
-inline int64_t PastDrift(int64_t nTime)   { return nTime - 5 * 60; } // up to 5 minutes from the past   
-inline int64_t FutureDrift(int64_t nTime) { return nTime + 5 * 60; } // up to 5 minutes from the future
+inline int64_t PastDrift(int64_t nTime)   { return nTime - 5 * 60; }
+inline int64_t FutureDrift(int64_t nTime) { return nTime + 5 * 60; }
 
 extern CScript COINBASE_FLAGS;
 extern CCriticalSection cs_main;
@@ -83,7 +81,6 @@ extern std::set<CWallet*> setpwalletRegistered;
 extern unsigned char pchMessageStart[4];
 extern std::map<uint256, CBlock*> mapOrphanBlocks;
 
-// Settings
 extern int64_t nTransactionFee;
 extern int64_t nReserveBalance;
 extern int64_t nMinimumInputValue;
@@ -93,7 +90,6 @@ extern int64_t nSplitThreshold;
 
 extern bool fEnforceCanonical;
 
-// Minimum disk space required - used in CheckDiskSpace()
 static const uint64_t nMinDiskSpace = 52428800;
 
 class CReserveKey;
@@ -117,7 +113,7 @@ bool LoadExternalBlockFile(FILE* fileIn);
 bool CheckProofOfWork(uint256 hash, unsigned int nBits);
 unsigned int GetNextTargetRequired(const CBlockIndex* pindexLast, bool fProofOfStake);
 int64_t GetProofOfWorkReward(int64_t nFees);
-int64_t GetProofOfStakeReward(int64_t nCoinAge, int64_t nFees);
+int64_t GetProofOfStakeReward(uint64_t nCoinAge, int64_t nFees, unsigned int nGrowth);
 unsigned int ComputeMinWork(unsigned int nBase, int64_t nTime);
 unsigned int ComputeMinStake(unsigned int nBase, int64_t nTime, unsigned int nBlockTime);
 int GetNumBlocksOfPeers();
@@ -695,7 +691,7 @@ public:
     bool ClientConnectInputs();
     bool CheckTransaction() const;
     bool AcceptToMemoryPool(CTxDB& txdb, bool fCheckInputs=true, bool* pfMissingInputs=NULL);
-    bool GetCoinAge(CTxDB& txdb, uint64_t& nCoinAge) const;  // ppcoin: get transaction coin age
+    bool GetCoinAge(CTxDB& txdb, uint64_t& nCoinAge, unsigned int& nGrowth) const;  // ppcoin: get transaction coin age
 
 protected:
     const CTxOut& GetOutputFor(const CTxIn& input, const MapPrevTx& inputs) const;
@@ -911,7 +907,7 @@ public:
 
     uint256 GetPoWHash() const
     {
-        return Hash9(BEGIN(nVersion), END(nNonce));
+        return HashX17(BEGIN(nVersion), END(nNonce));
 
     }
 

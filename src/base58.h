@@ -1,6 +1,6 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2016 The Bitcoin developers
-// Copyright (c) 2019 The WYTF Foundation
+// Copyright (c) 2016 The Chipcoin developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -277,9 +277,9 @@ class CBitcoinAddress : public CBase58Data
 public:
     enum
     {
-        PUBKEY_ADDRESS = 73,
-        SCRIPT_ADDRESS = 66,
-        PUBKEY_ADDRESS_TEST = 117,
+        PUBKEY_ADDRESS = 28,
+        SCRIPT_ADDRESS = 30,
+        PUBKEY_ADDRESS_TEST = 88,
         SCRIPT_ADDRESS_TEST = 196,
     };
 

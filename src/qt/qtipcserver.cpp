@@ -1,5 +1,5 @@
 // Copyright (c) 2009-2016 The Bitcoin developers
-// Copyright (c) 2019 The WYTF Foundation
+// Copyright (c) 2016 The Chipcoin developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -43,7 +43,7 @@ static bool ipcScanCmd(int argc, char *argv[], bool fRelay)
     bool fSent = false;
     for (int i = 1; i < argc; i++)
     {
-        if (boost::algorithm::istarts_with(argv[i], "WYTF:"))
+        if (boost::algorithm::istarts_with(argv[i], "Chipcoin:"))
         {
             const char *strURI = argv[i];
             try {
@@ -76,7 +76,7 @@ void ipcScanRelay(int argc, char *argv[])
 static void ipcThread(void* pArg)
 {
     // Make this thread recognisable as the GUI-IPC thread
-    RenameThread("WYTF-gui-ipc");
+    RenameThread("Chipcoin-gui-ipc");
 	
     try
     {

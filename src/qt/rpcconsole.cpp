@@ -27,10 +27,10 @@ const struct {
     const char *url;
     const char *source;
 } ICON_MAPPING[] = {
-    {"cmd-request", ":/icons/tx_input"},
-    {"cmd-reply", ":/icons/tx_output"},
-    {"cmd-error", ":/icons/tx_output"},
-    {"misc", ":/icons/tx_inout"},
+    {"cmd-request", ":/icons/debug_request"},
+    {"cmd-reply", ":/icons/debug_reply"},
+    {"cmd-error", ":/icons/debug_error"},
+    {"misc", ":/icons/debug_misc"},
     {NULL, NULL}
 };
 
@@ -305,14 +305,14 @@ void RPCConsole::clear()
     // Set default style sheet
     ui->messagesWidget->document()->setDefaultStyleSheet(
                 "table { }"
-                "td.time { color: #8a3232; padding-top: 3px; } "
-                "td.message { font-family: Monospace; font-size: 12px; color: #939393; } "
-                "td.cmd-request { color: #8a3232; } "
-                "td.cmd-error { color: #a66d68; } "
-                "b { color: #939393; } "
+                "td.time { color: #999999; padding-top: 3px; } "
+                "td.message { font-family: Inconsolata; font-size: 11px; } "
+                "td.cmd-request { color: #086639; } "
+                "td.cmd-error { color: #c63e3e; } "
+                "b { color: #086639; } "
                 );
 
-    message(CMD_REPLY, (tr("Welcome to the WYTF RPC console.") + "<br>" +
+    message(CMD_REPLY, (tr("Welcome to the Chipcoin RPC console.") + "<br>" +
                         tr("Use up and down arrows to navigate history, and <b>Ctrl-L</b> to clear screen.") + "<br>" +
                         tr("Type <b>help</b> for an overview of available commands.")), true);
 }

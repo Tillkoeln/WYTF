@@ -7,7 +7,7 @@
 #include "guiutil.h"
 
 // shared UI settings in guiutil.h
-bool fUseWYTFTheme;
+bool fUseChipcoinTheme;
 
 OptionsModel::OptionsModel(QObject *parent) :
     QAbstractListModel(parent)
@@ -47,7 +47,7 @@ void OptionsModel::Init()
     fMinimizeToTray = settings.value("fMinimizeToTray", false).toBool();
     fMinimizeOnClose = settings.value("fMinimizeOnClose", false).toBool();
     fCoinControlFeatures = settings.value("fCoinControlFeatures", true).toBool();
-    fUseWYTFTheme = settings.value("fUseWYTFTheme", true).toBool();
+    fUseChipcoinTheme = settings.value("fUseChipcoinTheme", true).toBool();
     nTransactionFee = settings.value("nTransactionFee").toLongLong();
     nReserveBalance = settings.value("nReserveBalance").toLongLong();
     language = settings.value("language", "").toString();
@@ -118,8 +118,8 @@ QVariant OptionsModel::data(const QModelIndex & index, int role) const
             return settings.value("language", "");
         case CoinControlFeatures:
             return QVariant(fCoinControlFeatures);
-        case UseWYTFTheme:
-            return QVariant(fUseWYTFTheme);
+        case UseChipcoinTheme:
+            return QVariant(fUseChipcoinTheme);
         default:
             return QVariant();
         }
@@ -220,9 +220,9 @@ bool OptionsModel::setData(const QModelIndex & index, const QVariant & value, in
             emit coinControlFeaturesChanged(fCoinControlFeatures);
             }
             break;
-        case UseWYTFTheme:
-            fUseWYTFTheme = value.toBool();
-            settings.setValue("fUseWYTFTheme", fUseWYTFTheme);
+        case UseChipcoinTheme:
+            fUseChipcoinTheme = value.toBool();
+            settings.setValue("fUseChipcoinTheme", fUseChipcoinTheme);
             break;
         default:
             break;

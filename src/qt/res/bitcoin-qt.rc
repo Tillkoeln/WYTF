@@ -1,4 +1,4 @@
-IDI_ICON1 ICON DISCARDABLE "icons/WYTF.ico"
+IDI_ICON1 ICON DISCARDABLE "icons/chipcoin.ico"
 
 #include <windows.h>             // needed for VERSIONINFO
 #include "../../clientversion.h" // holds the needed client version information
@@ -18,14 +18,14 @@ BEGIN
     BEGIN
         BLOCK "040904E4" // U.S. English - multilingual (hex)
         BEGIN
-            VALUE "CompanyName",        "WYTF"
-            VALUE "FileDescription",    "WYTF-Qt (OSS GUI client for WYTF)"
+            VALUE "CompanyName",        "chipcoin.info - cryptocurrency"
+            VALUE "FileDescription",    "chipcoin-qt (GUI client for the Chipcoin blockchain)"
             VALUE "FileVersion",        VER_FILEVERSION_STR
-            VALUE "InternalName",       "WYTF-qt"
-            VALUE "LegalCopyright",     "2009-2016 The Bitcoin developers, 2012-2016 The PPCoin developers, 2019 The WYTF Foundation"
+            VALUE "InternalName",       "Chipcoin-qt"
+            VALUE "LegalCopyright",     "2009-2020 The Bitcoin developers, 2012-2020 The PPCoin developers, 2015-2020 The Blockpioneers and Chipcoin Developers"
             VALUE "LegalTrademarks1",   "Distributed under the MIT/X11 software license, see the accompanying file COPYING or http://www.opensource.org/licenses/mit-license.php."
-            VALUE "OriginalFilename",   "WYTF-qt.exe"
-            VALUE "ProductName",        "WYTF-Qt"
+            VALUE "OriginalFilename",   "chipcoin-qt.exe"
+            VALUE "ProductName",        "chipcoin-qt"
             VALUE "ProductVersion",     VER_PRODUCTVERSION_STR
         END
     END

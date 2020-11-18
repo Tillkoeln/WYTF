@@ -42,16 +42,19 @@ public:
     void showOutOfSyncWarning(bool fShow);
 	
 	void setModel2(ClientModel *model2);
-		int heightPrevious;
+	int heightPrevious;
     int connectionPrevious;
     int volumePrevious;
+    int stakeminPrevious;
     int stakemaxPrevious;
     QString stakecPrevious;
+    double netPawratePrevious;
     QString pawratePrevious;
+    double hardnessPrevious;
     double hardnessPrevious2;
 	
     void updateOverview();
-    void updatePrevious(int, int, double, QString, int, double);	
+    void updatePrevious(int, int, int, double, double, double, QString, int, double);		
 
 public slots:
     void setBalance(qint64 balance, qint64 stake, qint64 unconfirmedBalance, qint64 immatureBalance);

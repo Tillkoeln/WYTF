@@ -181,11 +181,11 @@ void StakeReportDialog::updateStakeReport(bool fImmediate=false)
     if (ex_model && ex_model->getOptionsModel())
          nDisplayUnit = ex_model->getOptionsModel()->getDisplayUnit();
 
-    ui->L_Coin->setText(BitcoinUnits::name(nDisplayUnit) + " " + tr("SubTotal"));
+    ui->L_Coin->setText(BitcoinUnits::name(nDisplayUnit) + " " + tr("Total"));
 
     QTableWidget *TableW = ui->StakeReportTable;
 
-    TableW->horizontalHeaderItem(1)->setText(BitcoinUnits::name(nDisplayUnit) + " " +tr("Amount"));
+    TableW->horizontalHeaderItem(1)->setText(BitcoinUnits::name(nDisplayUnit) + " " +tr("Total"));
 
     int i=30;
 
@@ -198,23 +198,23 @@ void StakeReportDialog::updateStakeReport(bool fImmediate=false)
     }
     TableW->setSortingEnabled(true);
 
-    ui->Amount_24H->setText(Coin_0Pad(nDisplayUnit, aRange[i].Total) + tr(" WYTF"));
+    ui->Amount_24H->setText(Coin_0Pad(nDisplayUnit, aRange[i].Total) + tr(" CHIP"));
     ui->Stake_24H->setText(QString::number(aRange[i++].Count));
-    ui->Amount_7D->setText(Coin_0Pad(nDisplayUnit, aRange[i].Total) + tr(" WYTF"));
+    ui->Amount_7D->setText(Coin_0Pad(nDisplayUnit, aRange[i].Total) + tr(" CHIP"));
     ui->Stake_7D->setText(QString::number(aRange[i++].Count));
-    ui->Amount_30D->setText(Coin_0Pad(nDisplayUnit, aRange[i].Total) + tr(" WYTF"));
+    ui->Amount_30D->setText(Coin_0Pad(nDisplayUnit, aRange[i].Total) + tr(" CHIP"));
     ui->Stake_30D->setText(QString::number(aRange[i++].Count));
-    ui->Amount_365D->setText(Coin_0Pad(nDisplayUnit, aRange[i].Total) + tr(" WYTF"));
+    ui->Amount_365D->setText(Coin_0Pad(nDisplayUnit, aRange[i].Total) + tr(" CHIP"));
     ui->Stake_365D->setText(QString::number(aRange[i++].Count));
 
-    ui->Amount_Last->setText(tr("Amount: ") + Coin_0Pad(nDisplayUnit, aRange[i].Total) + tr(" WYTF"));
-    ui->L_LastStakeTime->setText(tr("Latest Stake date: ") + HalfDate(aRange[i].Start, "hh:mm"));
+    ui->Amount_Last->setText(tr("Total: ") + Coin_0Pad(nDisplayUnit, aRange[i].Total) + tr(" CHIP"));
+    ui->L_LastStakeTime->setText(tr("Latest stake date: ") + HalfDate(aRange[i].Start, "hh:mm"));
 
     ui->Stake_Counted->setText(tr("Stakes analysed: ") + QString::number(nItemCounted));
     if (nItemCounted)
-        ui->TimeTook->setText(tr("Last recalculation: ") + QString::number(nTook) +  "ms");
+        ui->TimeTook->setText(tr("Last Recalc took ") + QString::number(nTook) +  "ms");
 
-    ui->TimeTook_2->setText(tr("Refreshed in: ") + QString::number(GetTimeMillis() -nTook2) +  "ms");
+    ui->TimeTook_2->setText(tr("Refresh took ") + QString::number(GetTimeMillis() -nTook2) +  "ms");
 
     string sRefreshType = disablereportupdate ? "Manual refresh" : "Auto refresh";
 
@@ -240,7 +240,7 @@ void StakeReportDialog::CopyAllToClipboard()
 {
     QString Repo;
 
-    Repo += "           Stake Mini Report\n";
+    Repo += "           Staking Log\n";
     Repo += "         ---------------------\n";
 
     QString  RowForm = "%1 %2 %3\n";

@@ -3,19 +3,19 @@
     <name>AboutDialog</name>
     <message>
         <location filename="../forms/aboutdialog.ui" line="+14"/>
-        <source>About WYTF</source>
-        <translation>Tietoa WYTFista</translation>
+        <source>About Chipcoin</source>
+        <translation>Tietoa Chipcoinista</translation>
     </message>
     <message>
         <location line="+39"/>
-        <source>&lt;b&gt;WYTF&lt;/b&gt; version</source>
-        <translation>&lt;b&gt;WYTF&lt;/b&gt; versio</translation>
+        <source>&lt;b&gt;Chipcoin&lt;/b&gt; version</source>
+        <translation>&lt;b&gt;Chipcoin&lt;/b&gt; versio</translation>
     </message>
     <message>
         <location line="+41"/>
         <source>Copyright © 2009-2014 The Bitcoin developers
 Copyright © 2012-2014 The NovaCoin developers
-Copyright © 2014 The WYTF developers</source>
+Copyright © 2014 The Chipcoin developers</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -64,8 +64,8 @@ Tämä tuote sisältää OpenSSL-projektin kehittämää ohjelmistoa OpenSSL-ty�
     </message>
     <message>
         <location line="-46"/>
-        <source>These are your WYTF addresses for receiving payments. You may want to give a different one to each sender so you can keep track of who is paying you.</source>
-        <translation>Nämä ovat WYTF-osoitteesi rahansiirtojen vastaanottoa varten. Jos haluat, voit antaa jokaiselle lähettäjälle oman osoitteen jotta voit pitää kirjaa sinulle rahaa siirtäneistä henkilöistä.</translation>
+        <source>These are your Chipcoin addresses for receiving payments. You may want to give a different one to each sender so you can keep track of who is paying you.</source>
+        <translation>Nämä ovat Chipcoin-osoitteesi rahansiirtojen vastaanottoa varten. Jos haluat, voit antaa jokaiselle lähettäjälle oman osoitteen jotta voit pitää kirjaa sinulle rahaa siirtäneistä henkilöistä.</translation>
     </message>
     <message>
         <location line="+60"/>
@@ -79,8 +79,8 @@ Tämä tuote sisältää OpenSSL-projektin kehittämää ohjelmistoa OpenSSL-ty�
     </message>
     <message>
         <location line="+11"/>
-        <source>Sign a message to prove you own a WYTF address</source>
-        <translation>Allekirjoita viesti osoittaaksesi WYTF-osoitteesi omistajuus</translation>
+        <source>Sign a message to prove you own a Chipcoin address</source>
+        <translation>Allekirjoita viesti osoittaaksesi Chipcoin-osoitteesi omistajuus</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -94,8 +94,8 @@ Tämä tuote sisältää OpenSSL-projektin kehittämää ohjelmistoa OpenSSL-ty�
     </message>
     <message>
         <location line="-14"/>
-        <source>Verify a message to ensure it was signed with a specified WYTF address</source>
-        <translation>Vahvista viesti varmistaaksesi että kyseinen WYTF-osoitteesi on allekirjoittanut sen</translation>
+        <source>Verify a message to ensure it was signed with a specified Chipcoin address</source>
+        <translation>Vahvista viesti varmistaaksesi että kyseinen Chipcoin-osoitteesi on allekirjoittanut sen</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -262,8 +262,8 @@ Tämä tuote sisältää OpenSSL-projektin kehittämää ohjelmistoa OpenSSL-ty�
     </message>
     <message>
         <location line="-58"/>
-        <source>WYTF will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your coins from being stolen by malware infecting your computer.</source>
-        <translation>WYTF-ohjelma sulkee itsensä päättääkseen salauksen luonnin. Muista, että lompakon salaaminen ei täysin turvaa kolikoitasi haittaohjelmien aiheuttamien varkauksien uhalta.</translation>
+        <source>Chipcoin will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your coins from being stolen by malware infecting your computer.</source>
+        <translation>Chipcoin-ohjelma sulkee itsensä päättääkseen salauksen luonnin. Muista, että lompakon salaaminen ei täysin turvaa kolikoitasi haittaohjelmien aiheuttamien varkauksien uhalta.</translation>
     </message>
     <message>
         <location line="+13"/>
@@ -376,8 +376,8 @@ Tämä tuote sisältää OpenSSL-projektin kehittämää ohjelmistoa OpenSSL-ty�
     </message>
     <message>
         <location line="+6"/>
-        <source>Show information about WYTF</source>
-        <translation>Näytä tietoja WYTFista</translation>
+        <source>Show information about Chipcoin</source>
+        <translation>Näytä tietoja Chipcoinista</translation>
     </message>
     <message>
         <location line="+2"/>
@@ -426,13 +426,13 @@ Tämä tuote sisältää OpenSSL-projektin kehittämää ohjelmistoa OpenSSL-ty�
     </message>
     <message>
         <location line="-64"/>
-        <source>Send coins to a WYTF address</source>
-        <translation>Lähetä kolikkoja WYTF osoitteeseen</translation>
+        <source>Send coins to a Chipcoin address</source>
+        <translation>Lähetä kolikkoja Chipcoin osoitteeseen</translation>
     </message>
     <message>
         <location line="+47"/>
-        <source>Modify configuration options for WYTF</source>
-        <translation>Mukauta WYTFin konfigurointiasetuksia</translation>
+        <source>Modify configuration options for Chipcoin</source>
+        <translation>Mukauta Chipcoinin konfigurointiasetuksia</translation>
     </message>
     <message>
         <location line="+18"/>
@@ -471,8 +471,8 @@ Tämä tuote sisältää OpenSSL-projektin kehittämää ohjelmistoa OpenSSL-ty�
     </message>
     <message>
         <location line="-202"/>
-        <source>WYTF</source>
-        <translation>WYTF</translation>
+        <source>Chipcoin</source>
+        <translation>Chipcoin</translation>
     </message>
     <message>
         <location line="+0"/>
@@ -481,8 +481,8 @@ Tämä tuote sisältää OpenSSL-projektin kehittämää ohjelmistoa OpenSSL-ty�
     </message>
     <message>
         <location line="+180"/>
-        <source>&amp;About WYTF</source>
-        <translation>&amp;Tietoa WYTFista</translation>
+        <source>&amp;About Chipcoin</source>
+        <translation>&amp;Tietoa Chipcoinista</translation>
     </message>
     <message>
         <location line="+9"/>
@@ -538,13 +538,13 @@ Tämä tuote sisältää OpenSSL-projektin kehittämää ohjelmistoa OpenSSL-ty�
     <message>
         <location line="+0"/>
         <location line="+60"/>
-        <source>WYTF client</source>
-        <translation>WYTF-asiakas</translation>
+        <source>Chipcoin client</source>
+        <translation>Chipcoin-asiakas</translation>
     </message>
     <message numerus="yes">
         <location line="+75"/>
-        <source>%n active connection(s) to WYTF network</source>
-        <translation><numerusform>%n aktiivinen yhteys WYTF-verkkoon</numerusform><numerusform>%n aktiivista yhteyttä WYTF-verkkoon</numerusform></translation>
+        <source>%n active connection(s) to Chipcoin network</source>
+        <translation><numerusform>%n aktiivinen yhteys Chipcoin-verkkoon</numerusform><numerusform>%n aktiivista yhteyttä Chipcoin-verkkoon</numerusform></translation>
     </message>
     <message>
         <location line="+40"/>
@@ -583,12 +583,12 @@ Tämä tuote sisältää OpenSSL-projektin kehittämää ohjelmistoa OpenSSL-ty�
     </message>
     <message>
         <location line="-312"/>
-        <source>About WYTF card</source>
+        <source>About Chipcoin card</source>
         <translation type="unfinished"/>
     </message>
     <message>
         <location line="+1"/>
-        <source>Show information about WYTF card</source>
+        <source>Show information about Chipcoin card</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -667,8 +667,8 @@ Osoite: %4</translation>
     <message>
         <location line="-15"/>
         <location line="+15"/>
-        <source>URI can not be parsed! This can be caused by an invalid WYTF address or malformed URI parameters.</source>
-        <translation>URI-merkkijonoa ei voida jäsentää! Tämä voi johtua väärästä WYTF-osoitteesta tai väärässä muodossa olevista URI-parametreistä.</translation>
+        <source>URI can not be parsed! This can be caused by an invalid Chipcoin address or malformed URI parameters.</source>
+        <translation>URI-merkkijonoa ei voida jäsentää! Tämä voi johtua väärästä Chipcoin-osoitteesta tai väärässä muodossa olevista URI-parametreistä.</translation>
     </message>
     <message>
         <location line="+18"/>
@@ -727,8 +727,8 @@ Osoite: %4</translation>
     </message>
     <message>
         <location filename="../bitcoin.cpp" line="+109"/>
-        <source>A fatal error occurred. WYTF can no longer continue safely and will quit.</source>
-        <translation>Vakava virhe kohdattu. WYTF-ohjelma ei voi enää jatkaa turvallisesti ja sulkee itsensä.</translation>
+        <source>A fatal error occurred. Chipcoin can no longer continue safely and will quit.</source>
+        <translation>Vakava virhe kohdattu. Chipcoin-ohjelma ei voi enää jatkaa turvallisesti ja sulkee itsensä.</translation>
     </message>
 </context>
 <context>
@@ -1061,8 +1061,8 @@ Tämä tarkoittaa, että ainakin %2 rahansiirtopalkkio tarvitaan.</translation>
     </message>
     <message>
         <location line="-5"/>
-        <source>The entered address &quot;%1&quot; is not a valid WYTF address.</source>
-        <translation>Syöttämäsi osoite &quot;%1&quot; ei ole hyväksytty WYTF-osoite.</translation>
+        <source>The entered address &quot;%1&quot; is not a valid Chipcoin address.</source>
+        <translation>Syöttämäsi osoite &quot;%1&quot; ei ole hyväksytty Chipcoin-osoite.</translation>
     </message>
     <message>
         <location line="+10"/>
@@ -1080,8 +1080,8 @@ Tämä tarkoittaa, että ainakin %2 rahansiirtopalkkio tarvitaan.</translation>
     <message>
         <location filename="../guiutil.cpp" line="+420"/>
         <location line="+12"/>
-        <source>WYTF-Qt</source>
-        <translation>WYTF-Qt</translation>
+        <source>Chipcoin-Qt</source>
+        <translation>Chipcoin-Qt</translation>
     </message>
     <message>
         <location line="-12"/>
@@ -1153,13 +1153,13 @@ Tämä tarkoittaa, että ainakin %2 rahansiirtopalkkio tarvitaan.</translation>
     </message>
     <message>
         <location line="+31"/>
-        <source>Automatically start WYTF after logging in to the system.</source>
-        <translation>Käynnistä WYTF-asiakasohjelma automaattisesti kun olet kirjautunut järjestelmään.</translation>
+        <source>Automatically start Chipcoin after logging in to the system.</source>
+        <translation>Käynnistä Chipcoin-asiakasohjelma automaattisesti kun olet kirjautunut järjestelmään.</translation>
     </message>
     <message>
         <location line="+3"/>
-        <source>&amp;Start WYTF on system login</source>
-        <translation>%Käynnistä WYTF-asiakasohjelma kirjautuessasi</translation>
+        <source>&amp;Start Chipcoin on system login</source>
+        <translation>%Käynnistä Chipcoin-asiakasohjelma kirjautuessasi</translation>
     </message>
     <message>
         <location line="+7"/>
@@ -1178,8 +1178,8 @@ Tämä tarkoittaa, että ainakin %2 rahansiirtopalkkio tarvitaan.</translation>
     </message>
     <message>
         <location line="+6"/>
-        <source>Automatically open the WYTF client port on the router. This only works when your router supports UPnP and it is enabled.</source>
-        <translation>Avaa WYTF-asiakkaalle automaattisesti portti reitittimestä. Tämä toimii vain, kun reitittimesi tukee UPnP:tä ja se on aktivoituna.</translation>
+        <source>Automatically open the Chipcoin client port on the router. This only works when your router supports UPnP and it is enabled.</source>
+        <translation>Avaa Chipcoin-asiakkaalle automaattisesti portti reitittimestä. Tämä toimii vain, kun reitittimesi tukee UPnP:tä ja se on aktivoituna.</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -1188,8 +1188,8 @@ Tämä tarkoittaa, että ainakin %2 rahansiirtopalkkio tarvitaan.</translation>
     </message>
     <message>
         <location line="+7"/>
-        <source>Connect to the WYTF network through a SOCKS proxy (e.g. when connecting through Tor).</source>
-        <translation>Yhdistä WYTF-verkkoon SOCKS-välityspalvelimen lävitse. (esim. yhdistettäessä Tor:n läpi).</translation>
+        <source>Connect to the Chipcoin network through a SOCKS proxy (e.g. when connecting through Tor).</source>
+        <translation>Yhdistä Chipcoin-verkkoon SOCKS-välityspalvelimen lävitse. (esim. yhdistettäessä Tor:n läpi).</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -1263,8 +1263,8 @@ Tämä tarkoittaa, että ainakin %2 rahansiirtopalkkio tarvitaan.</translation>
     </message>
     <message>
         <location line="+13"/>
-        <source>The user interface language can be set here. This setting will take effect after restarting WYTF.</source>
-        <translation>Käyttöliittymän kieli voidaan valita tästä. Tämä asetus tulee voimaan vasta WYTF-asiakasohjelman uudelleenkäynnistyksen jälkeen.</translation>
+        <source>The user interface language can be set here. This setting will take effect after restarting Chipcoin.</source>
+        <translation>Käyttöliittymän kieli voidaan valita tästä. Tämä asetus tulee voimaan vasta Chipcoin-asiakasohjelman uudelleenkäynnistyksen jälkeen.</translation>
     </message>
     <message>
         <location line="+11"/>
@@ -1278,8 +1278,8 @@ Tämä tarkoittaa, että ainakin %2 rahansiirtopalkkio tarvitaan.</translation>
     </message>
     <message>
         <location line="+9"/>
-        <source>Whether to show WYTF addresses in the transaction list or not.</source>
-        <translation>Näytä tai piilota WYTF-osoitteet rahansiirtolistassa.</translation>
+        <source>Whether to show Chipcoin addresses in the transaction list or not.</source>
+        <translation>Näytä tai piilota Chipcoin-osoitteet rahansiirtolistassa.</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -1325,8 +1325,8 @@ Tämä tarkoittaa, että ainakin %2 rahansiirtopalkkio tarvitaan.</translation>
     <message>
         <location line="-9"/>
         <location line="+9"/>
-        <source>This setting will take effect after restarting WYTF.</source>
-        <translation>Tämä asetus tulee voimaan vasta WYTF-asiakasohjelman uudelleenkäynnistyksen jälkeen.</translation>
+        <source>This setting will take effect after restarting Chipcoin.</source>
+        <translation>Tämä asetus tulee voimaan vasta Chipcoin-asiakasohjelman uudelleenkäynnistyksen jälkeen.</translation>
     </message>
     <message>
         <location line="+29"/>
@@ -1344,8 +1344,8 @@ Tämä tarkoittaa, että ainakin %2 rahansiirtopalkkio tarvitaan.</translation>
     <message>
         <location line="+33"/>
         <location line="+231"/>
-        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the WYTF network after a connection is established, but this process has not completed yet.</source>
-        <translation>Näytettävät tiedot voivat olla vanhentuneet. Lompakkosi synkronoituu automaattisesti WYTF-verkon kanssa kun yhteys on muodostettu, mutta tätä prosessia ei ole viety vielä päätökseen.</translation>
+        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the Chipcoin network after a connection is established, but this process has not completed yet.</source>
+        <translation>Näytettävät tiedot voivat olla vanhentuneet. Lompakkosi synkronoituu automaattisesti Chipcoin-verkon kanssa kun yhteys on muodostettu, mutta tätä prosessia ei ole viety vielä päätökseen.</translation>
     </message>
     <message>
         <location line="-160"/>
@@ -1560,8 +1560,8 @@ Tämä tarkoittaa, että ainakin %2 rahansiirtopalkkio tarvitaan.</translation>
     </message>
     <message>
         <location line="+7"/>
-        <source>Show the WYTF-Qt help message to get a list with possible WYTF command-line options.</source>
-        <translation>Näytä WYTF-Qt:n avustusohje saadaksesi listan käytettävistä WYTFin komentokehotteen määritteistä.</translation>
+        <source>Show the Chipcoin-Qt help message to get a list with possible Chipcoin command-line options.</source>
+        <translation>Näytä Chipcoin-Qt:n avustusohje saadaksesi listan käytettävistä Chipcoinin komentokehotteen määritteistä.</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -1580,13 +1580,13 @@ Tämä tarkoittaa, että ainakin %2 rahansiirtopalkkio tarvitaan.</translation>
     </message>
     <message>
         <location line="-104"/>
-        <source>WYTF - Debug window</source>
-        <translation>WYTF - Debug-ikkuna</translation>
+        <source>Chipcoin - Debug window</source>
+        <translation>Chipcoin - Debug-ikkuna</translation>
     </message>
     <message>
         <location line="+25"/>
-        <source>WYTF Core</source>
-        <translation>WYTFin ydin</translation>
+        <source>Chipcoin Core</source>
+        <translation>Chipcoinin ydin</translation>
     </message>
     <message>
         <location line="+279"/>
@@ -1595,8 +1595,8 @@ Tämä tarkoittaa, että ainakin %2 rahansiirtopalkkio tarvitaan.</translation>
     </message>
     <message>
         <location line="+7"/>
-        <source>Open the WYTF debug log file from the current data directory. This can take a few seconds for large log files.</source>
-        <translation>Avaa WYTF-asiakasohjelman debug-lokitiedosto nykyisestä hakemistostaan. Tämä voi kestää muutaman sekunnin avattaessa suuria lokitiedostoja.</translation>
+        <source>Open the Chipcoin debug log file from the current data directory. This can take a few seconds for large log files.</source>
+        <translation>Avaa Chipcoin-asiakasohjelman debug-lokitiedosto nykyisestä hakemistostaan. Tämä voi kestää muutaman sekunnin avattaessa suuria lokitiedostoja.</translation>
     </message>
     <message>
         <location line="+102"/>
@@ -1605,8 +1605,8 @@ Tämä tarkoittaa, että ainakin %2 rahansiirtopalkkio tarvitaan.</translation>
     </message>
     <message>
         <location filename="../rpcconsole.cpp" line="-33"/>
-        <source>Welcome to the WYTF RPC console.</source>
-        <translation>Tervetuloa WYTFin RPC-konsoliin.</translation>
+        <source>Welcome to the Chipcoin RPC console.</source>
+        <translation>Tervetuloa Chipcoinin RPC-konsoliin.</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -1764,8 +1764,8 @@ Tämä tarkoittaa, että ainakin %2 rahansiirtopalkkio tarvitaan.</translation>
     </message>
     <message>
         <location filename="../sendcoinsdialog.cpp" line="-173"/>
-        <source>Enter a WYTF address (e.g. WYTFwwuDea7ejXRdmgNKj4A2SWJ39SRNX3)</source>
-        <translation>Syötä WYTF-osoite (esim. WYTFwwuDea7ejXRdmgNKj4A2SWJ39SRNX3)</translation>
+        <source>Chipcoin address</source>
+        <translation>Syötä Chipcoin-osoite (esim. MaRFgKce467n4hZzaV9Vis1Eq5m53KtKa)</translation>
     </message>
     <message>
         <location line="+15"/>
@@ -1864,8 +1864,8 @@ Tämä tarkoittaa, että ainakin %2 rahansiirtopalkkio tarvitaan.</translation>
     </message>
     <message>
         <location line="+251"/>
-        <source>WARNING: Invalid WYTF address</source>
-        <translation>VAROITUS: Epäkelpo WYTF-osoite</translation>
+        <source>WARNING: Invalid Chipcoin address</source>
+        <translation>VAROITUS: Epäkelpo Chipcoin-osoite</translation>
     </message>
     <message>
         <location line="+13"/>
@@ -1908,8 +1908,8 @@ Tämä tarkoittaa, että ainakin %2 rahansiirtopalkkio tarvitaan.</translation>
     </message>
     <message>
         <location line="+18"/>
-        <source>The address to send the payment to  (e.g. WYTFwwuDea7ejXRdmgNKj4A2SWJ39SRNX3)</source>
-        <translation>Osoite, johon maksu lähetetään (esim. WYTFwwuDea7ejXRdmgNKj4A2SWJ39SRNX3)</translation>
+        <source>The address to send the payment to </source>
+        <translation>Osoite, johon maksu lähetetään (esim. MaRFgKce467n4hZzaV9Vis1Eq5m53KtKa)</translation>
     </message>
     <message>
         <location line="+10"/>
@@ -1938,8 +1938,8 @@ Tämä tarkoittaa, että ainakin %2 rahansiirtopalkkio tarvitaan.</translation>
     </message>
     <message>
         <location filename="../sendcoinsentry.cpp" line="+1"/>
-        <source>Enter a WYTF address (e.g. WYTFwwuDea7ejXRdmgNKj4A2SWJ39SRNX3)</source>
-        <translation>Syötä WYTF-osoite (esim. WYTFwwuDea7ejXRdmgNKj4A2SWJ39SRNX3)</translation>
+        <source>Chipcoin address</source>
+        <translation>Syötä Chipcoin-osoite (esim. MaRFgKce467n4hZzaV9Vis1Eq5m53KtKa)</translation>
     </message>
 </context>
 <context>
@@ -1962,8 +1962,8 @@ Tämä tarkoittaa, että ainakin %2 rahansiirtopalkkio tarvitaan.</translation>
     </message>
     <message>
         <location line="+18"/>
-        <source>The address to sign the message with (e.g. WYTFwwuDea7ejXRdmgNKj4A2SWJ39SRNX3)</source>
-        <translation>Osoite, jolle viesti kirjataan (esim. WYTFwwuDea7ejXRdmgNKj4A2SWJ39SRNX3)</translation>
+        <source>The address to sign the message with</source>
+        <translation>Osoite, jolle viesti kirjataan (esim. MaRFgKce467n4hZzaV9Vis1Eq5m53KtKa)</translation>
     </message>
     <message>
         <location line="+10"/>
@@ -1999,8 +1999,8 @@ Tämä tarkoittaa, että ainakin %2 rahansiirtopalkkio tarvitaan.</translation>
     </message>
     <message>
         <location line="+21"/>
-        <source>Sign the message to prove you own this WYTF address</source>
-        <translation>Allekirjoita viesti vahvistaaksesi, että omistat tämän WYTF-osoitteen</translation>
+        <source>Sign the message to prove you own this Chipcoin address</source>
+        <translation>Allekirjoita viesti vahvistaaksesi, että omistat tämän Chipcoin-osoitteen</translation>
     </message>
     <message>
         <location line="+17"/>
@@ -2026,13 +2026,13 @@ Tämä tarkoittaa, että ainakin %2 rahansiirtopalkkio tarvitaan.</translation>
     </message>
     <message>
         <location line="+21"/>
-        <source>The address the message was signed with (e.g. WYTFwwuDea7ejXRdmgNKj4A2SWJ39SRNX3)</source>
-        <translation>Osoite, jolla viesti on allekirjoitettu (esim. WYTFwwuDea7ejXRdmgNKj4A2SWJ39SRNX3) </translation>
+        <source>The address the message was signed with</source>
+        <translation>Osoite, jolla viesti on allekirjoitettu (esim. MaRFgKce467n4hZzaV9Vis1Eq5m53KtKa) </translation>
     </message>
     <message>
         <location line="+40"/>
-        <source>Verify the message to ensure it was signed with the specified WYTF address</source>
-        <translation>Vahvista viesti varmistaaksesi että se on allekirjoitettu kyseisellä WYTF-osoitteella</translation>
+        <source>Verify the message to ensure it was signed with the specified Chipcoin address</source>
+        <translation>Vahvista viesti varmistaaksesi että se on allekirjoitettu kyseisellä Chipcoin-osoitteella</translation>
     </message>
     <message>
         <location line="+17"/>
@@ -2042,8 +2042,8 @@ Tämä tarkoittaa, että ainakin %2 rahansiirtopalkkio tarvitaan.</translation>
     <message>
         <location filename="../signverifymessagedialog.cpp" line="+27"/>
         <location line="+3"/>
-        <source>Enter a WYTF address (e.g. WYTFwwuDea7ejXRdmgNKj4A2SWJ39SRNX3)</source>
-        <translation>Syötä WYTF-osoite (esim. WYTFwwuDea7ejXRdmgNKj4A2SWJ39SRNX3)</translation>
+        <source>Chipcoin address</source>
+        <translation>Syötä Chipcoin-osoite (esim. MaRFgKce467n4hZzaV9Vis1Eq5m53KtKa)</translation>
     </message>
     <message>
         <location line="-2"/>
@@ -2052,8 +2052,8 @@ Tämä tarkoittaa, että ainakin %2 rahansiirtopalkkio tarvitaan.</translation>
     </message>
     <message>
         <location line="+3"/>
-        <source>Enter WYTF signature</source>
-        <translation>Syötä WYTF-allekirjoitus</translation>
+        <source>Enter Chipcoin signature</source>
+        <translation>Syötä Chipcoin-allekirjoitus</translation>
     </message>
     <message>
         <location line="+82"/>
@@ -2623,8 +2623,8 @@ Tämä tarkoittaa, että ainakin %2 rahansiirtopalkkio tarvitaan.</translation>
     <name>bitcoin-core</name>
     <message>
         <location filename="../bitcoinstrings.cpp" line="+33"/>
-        <source>WYTF version</source>
-        <translation>WYTFin versio</translation>
+        <source>Chipcoin version</source>
+        <translation>Chipcoinin versio</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -2633,8 +2633,8 @@ Tämä tarkoittaa, että ainakin %2 rahansiirtopalkkio tarvitaan.</translation>
     </message>
     <message>
         <location line="+1"/>
-        <source>Send command to -server or wytfd</source>
-        <translation>Syötä komento kohteeseen -server tai wytfd</translation>
+        <source>Send command to -server or chipcoind</source>
+        <translation>Syötä komento kohteeseen -server tai chipcoind</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -2653,13 +2653,13 @@ Tämä tarkoittaa, että ainakin %2 rahansiirtopalkkio tarvitaan.</translation>
     </message>
     <message>
         <location line="+2"/>
-        <source>Specify configuration file (default: wytf.conf)</source>
-        <translation>Määritä asetustiedosto (oletus: wytf.conf)</translation>
+        <source>Specify configuration file (default: chipcoin.conf)</source>
+        <translation>Määritä asetustiedosto (oletus: chipcoin.conf)</translation>
     </message>
     <message>
         <location line="+1"/>
-        <source>Specify pid file (default: wytfd.pid)</source>
-        <translation>Määritä prosessitiedosto (oletus: WYTF.pid)</translation>
+        <source>Specify pid file (default: chipcoind.pid)</source>
+        <translation>Määritä prosessitiedosto (oletus: Chipcoin.pid)</translation>
     </message>
     <message>
         <location line="+2"/>
@@ -2794,7 +2794,7 @@ Tämä tarkoittaa, että ainakin %2 rahansiirtopalkkio tarvitaan.</translation>
     <message>
         <location line="+117"/>
         <source>Error initializing database environment %s! To recover, BACKUP THAT DIRECTORY, then remove everything from it except for wallet.dat.</source>
-        <translation>Virhe alustettaessa tietokantaympäristöä %s! Palauttaaksesi sen, TEE VARMUUSKOWYTF HAKEMISTOSTA ja poista tämän jälkeen kaikki hakemiston tiedostot paitsi wallet.dat-tiedosto.</translation>
+        <translation>Virhe alustettaessa tietokantaympäristöä %s! Palauttaaksesi sen, TEE VARMUUSKOPIO HAKEMISTOSTA ja poista tämän jälkeen kaikki hakemiston tiedostot paitsi wallet.dat-tiedosto.</translation>
     </message>
     <message>
         <location line="-20"/>
@@ -2808,8 +2808,8 @@ Tämä tarkoittaa, että ainakin %2 rahansiirtopalkkio tarvitaan.</translation>
     </message>
     <message>
         <location line="+61"/>
-        <source>Warning: Please check that your computer&apos;s date and time are correct! If your clock is wrong WYTF will not work properly.</source>
-        <translation>Varoitus: Tarkista, että tietokoneesi aika ja päivämäärä ovat oikeassa! Jos kellosi on väärässä, WYTF ei toimi oikein.</translation>
+        <source>Warning: Please check that your computer&apos;s date and time are correct! If your clock is wrong Chipcoin will not work properly.</source>
+        <translation>Varoitus: Tarkista, että tietokoneesi aika ja päivämäärä ovat oikeassa! Jos kellosi on väärässä, Chipcoin ei toimi oikein.</translation>
     </message>
     <message>
         <location line="-31"/>
@@ -2998,23 +2998,23 @@ Tämä tarkoittaa, että ainakin %2 rahansiirtopalkkio tarvitaan.</translation>
         <source>%s, you must set a rpcpassword in the configuration file:
  %s
 It is recommended you use the following random password:
-rpcuser=WYTFrpc
+rpcuser=Chipcoinrpc
 rpcpassword=%s
 (you do not need to remember this password)
 The username and password MUST NOT be the same.
 If the file does not exist, create it with owner-readable-only file permissions.
 It is also recommended to set alertnotify so you are notified of problems;
-for example: alertnotify=echo %%s | mail -s &quot;WYTF Alert&quot; admin@foo.com
+for example: alertnotify=echo %%s | mail -s &quot;Chipcoin Alert&quot; admin@foo.com
 </source>
         <translation>%s, sinun on asetettava rpcpassword asetustiedostoon:
 %s
 On suositeltavaa, että käytät seuraavaa arvottua salasanaa:
-rpcuser=WYTFrpc
+rpcuser=Chipcoinrpc
 rpcpassword=%s
 (Sinun ei tarvitse muistaa tätä salasanaa)
 Käyttäjänimen ja salasanan EI TULE OLLA SAMOJA.
 Jos tiedostoa ei ole olemassa, luo se asettaen samalla omistajan lukuoikeudet.
-On myös suositeltavaa asettaa alertnotify jolloin olet tiedotettu ongelmista; esimerkiksi: alertnotify=echo %%s | mail -s &quot;WYTF Alert&quot; admin@foo.com
+On myös suositeltavaa asettaa alertnotify jolloin olet tiedotettu ongelmista; esimerkiksi: alertnotify=echo %%s | mail -s &quot;Chipcoin Alert&quot; admin@foo.com
 </translation>
     </message>
     <message>
@@ -3139,13 +3139,13 @@ On myös suositeltavaa asettaa alertnotify jolloin olet tiedotettu ongelmista; e
     </message>
     <message>
         <location line="+1"/>
-        <source>Cannot obtain a lock on data directory %s.  WYTF is probably already running.</source>
-        <translation>Ei voida saavuttaa lukkoa datatiedostossa %s. WYTF-asiakasohjelma on ehkä jo käynnissä.</translation>
+        <source>Cannot obtain a lock on data directory %s.  Chipcoin is probably already running.</source>
+        <translation>Ei voida saavuttaa lukkoa datatiedostossa %s. Chipcoin-asiakasohjelma on ehkä jo käynnissä.</translation>
     </message>
     <message>
         <location line="-98"/>
-        <source>WYTF</source>
-        <translation>WYTF</translation>
+        <source>Chipcoin</source>
+        <translation>Chipcoin</translation>
     </message>
     <message>
         <location line="+140"/>
@@ -3179,13 +3179,13 @@ On myös suositeltavaa asettaa alertnotify jolloin olet tiedotettu ongelmista; e
     </message>
     <message>
         <location line="+4"/>
-        <source>Error loading wallet.dat: Wallet requires newer version of WYTF</source>
-        <translation>Virhe ladattaessa wallet.dat-tiedostoa: Lompakko tarvitsee uudemman version WYTF-asiakasohjelmasta</translation>
+        <source>Error loading wallet.dat: Wallet requires newer version of Chipcoin</source>
+        <translation>Virhe ladattaessa wallet.dat-tiedostoa: Lompakko tarvitsee uudemman version Chipcoin-asiakasohjelmasta</translation>
     </message>
     <message>
         <location line="+1"/>
-        <source>Wallet needed to be rewritten: restart WYTF to complete</source>
-        <translation>Lompakko on kirjoitettava uudelleen: käynnistä WYTF-asiakasohjelma uudelleen päättääksesi toiminnon</translation>
+        <source>Wallet needed to be rewritten: restart Chipcoin to complete</source>
+        <translation>Lompakko on kirjoitettava uudelleen: käynnistä Chipcoin-asiakasohjelma uudelleen päättääksesi toiminnon</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -3254,8 +3254,8 @@ On myös suositeltavaa asettaa alertnotify jolloin olet tiedotettu ongelmista; e
     </message>
     <message>
         <location line="+122"/>
-        <source>Unable to bind to %s on this computer. WYTF is probably already running.</source>
-        <translation>Ei voitu liittää %s tällä tietokoneella. WYTF-asiakasohjelma on jo ehkä päällä.</translation>
+        <source>Unable to bind to %s on this computer. Chipcoin is probably already running.</source>
+        <translation>Ei voitu liittää %s tällä tietokoneella. Chipcoin-asiakasohjelma on jo ehkä päällä.</translation>
     </message>
     <message>
         <location line="-97"/>

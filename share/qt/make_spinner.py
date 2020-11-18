@@ -7,7 +7,7 @@ from os import path
 from PIL import Image
 from subprocess import Popen
 
-SRC='img/sync.png'
+SRC='img/reload_scaled.png'
 DST='../../src/qt/res/movies/update_spinner.mng'
 TMPDIR='/tmp'
 TMPNAME='tmp-%03i.png'
@@ -15,7 +15,7 @@ NUMFRAMES=35
 FRAMERATE=10.0
 CONVERT='convert'
 CLOCKWISE=True
-DSIZE=(20,20)
+DSIZE=(16,16)
 
 im_src = Image.open(SRC)
 

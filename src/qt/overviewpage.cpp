@@ -19,12 +19,12 @@
 
 #include <sstream>
 #include <string>
-
 #include <QAbstractItemDelegate>
 #include <QPainter>
+#include <QScrollBar>
 
-#define DECORATION_SIZE 42
-#define NUM_ITEMS 5
+#define DECORATION_SIZE 43
+#define NUM_ITEMS 42
 
 using namespace json_spirit;
 
@@ -63,24 +63,24 @@ public:
         {
             foreground = qvariant_cast<QColor>(value);
         }
-foreground = QColor(167,169,169);
+		foreground = QColor(8,102,57);
         painter->setPen(foreground);
         painter->drawText(addressRect, Qt::AlignLeft|Qt::AlignVCenter, address);
 
         if(amount < 0)
         {
             foreground = option.palette.color(QPalette::Text);
-            foreground = QColor(217,119,119);
+            foreground = QColor(198,62,62);
         }
         else if(!confirmed)
         {
             foreground = option.palette.color(QPalette::Text);
-            foreground = QColor(214,214,214);
+            foreground = QColor(8,10,14);
         }
         else
         {
             foreground = option.palette.color(QPalette::Text);
-            foreground = QColor(54,145,107);
+            foreground = QColor(8,102,57);
         }
         painter->setPen(foreground);
         QString amountText = BitcoinUnits::formatWithUnit(unit, amount, true);
@@ -93,7 +93,7 @@ foreground = QColor(167,169,169);
         painter->setPen(option.palette.color(QPalette::Text));
         painter->drawText(amountRect, Qt::AlignLeft|Qt::AlignVCenter, GUIUtil::dateTimeStr(date));
 
-        painter->setPen(QColor(39,39,39));
+        painter->setPen(QColor(205,205,205));
         painter->drawLine(QPoint(mainRect.left(), mainRect.bottom()), QPoint(mainRect.right(), mainRect.bottom()));
         painter->drawLine(QPoint(amountRect.left()-6, mainRect.top()), QPoint(amountRect.left()-6, mainRect.bottom()));
         painter->restore();
@@ -120,22 +120,16 @@ OverviewPage::OverviewPage(QWidget *parent) :
     filter(0)
 {
     ui->setupUi(this);
-
-    // Recent transactions
     ui->listTransactions->setItemDelegate(txdelegate);
     ui->listTransactions->setIconSize(QSize(DECORATION_SIZE, DECORATION_SIZE));
     ui->listTransactions->setMinimumHeight(NUM_ITEMS * (DECORATION_SIZE + 2));
-    ui->listTransactions->setAttribute(Qt::WA_MacShowFocusRect, false);
-
+    ui->listTransactions->setAttribute(Qt::WA_MacShowFocusRect, false);	
     connect(ui->listTransactions, SIGNAL(clicked(QModelIndex)), this, SLOT(handleTransactionClicked(QModelIndex)));
-
 	
-    // init "out of sync" warning labels
-    ui->labelWalletStatus->setText("(" + tr("Out of sync with the WYTF network") + ")");
-    ui->labelTransactionsStatus->setText("(" + tr("Out of sync with the WYTF network") + ")");
-	ui->labelNetworkStatus->setText("(" + tr("Out of sync with the WYTF network") + ")");
-	
-    // start with displaying the "out of sync" warnings
+	//sync warnings
+    ui->labelWalletStatus->setText("(" + tr("Out of sync with the Chipcoin network") + ")");
+    ui->labelTransactionsStatus->setText("(" + tr("Out of sync with the Chipcoin network") + ")");
+	ui->labelNetworkStatus->setText(" (" + tr("Network info is turned off during syncing") + ")");
     showOutOfSyncWarning(true);
 }
 
@@ -149,8 +143,7 @@ OverviewPage::~OverviewPage()
 {
     delete ui;
 }
-
-
+	
 void OverviewPage::setBalance(qint64 balance, qint64 stake, qint64 unconfirmedBalance, qint64 immatureBalance)
 {
     int unit = model->getOptionsModel()->getDisplayUnit();
@@ -163,12 +156,6 @@ void OverviewPage::setBalance(qint64 balance, qint64 stake, qint64 unconfirmedBa
     ui->labelUnconfirmed->setText(BitcoinUnits::formatWithUnit(unit, unconfirmedBalance));
     ui->labelImmature->setText(BitcoinUnits::formatWithUnit(unit, immatureBalance));
 	ui->labelTotal->setText(BitcoinUnits::formatWithUnit(unit, balance + stake + unconfirmedBalance + immatureBalance));
-
-    // only show immature (newly mined) balance if it's non-zero, so as not to complicate things
-    // for the non-mining users
-    bool showImmature = immatureBalance != 0;
-    ui->labelImmature->setVisible(showImmature);
-    ui->labelImmatureText->setVisible(showImmature);
 }
 
 void OverviewPage::setNumTransactions(int count)
@@ -190,14 +177,23 @@ QString percPrevious = "";
 void OverviewPage::updateOverview()
 {
 	int unit = model->getOptionsModel()->getDisplayUnit();
+    double pHardness = GetDifficulty();
     double pHardness2 = GetDifficulty(GetLastBlockIndex(pindexBest, true));
+    double pPawrate = GetPoWMHashPS();
+    //double pPawrate2 = 0.000;
     int nHeight = pindexBest->nHeight;
+    uint64_t nMinWeight = 0, nMaxWeight = 0, nWeight = 0;
+    pwalletMain->GetStakeWeight(*pwalletMain, nMinWeight, nMaxWeight, nWeight);
     uint64_t nNetworkWeight = GetPoSKernelPS();
     double volume = pindexBest->nMoneySupply;
     int peers = this->model2->getNumConnections();
+    //pPawrate2 = (double)pPawrate;
     QString height = QString::number(nHeight);
+    QString stakemin = QString::number(nMinWeight);
     QString stakemax = QString::number(nNetworkWeight);
+    QString hardness = QString::number(pHardness, 'f', 8);
     QString hardness2 = QString::number(pHardness2, 'f', 8);
+    QString pawrate = QString::number(pPawrate, 'f', 3);
 	QString Qlpawrate = model2->getLastBlockDate().toString();
     QString QPeers = QString::number(peers);
     QString qVolume = BitcoinUnits::formatWithUnit(unit, volume);
@@ -209,11 +205,26 @@ void OverviewPage::updateOverview()
     ui->heightBox->setText(height);
     }
 
+    if(0 > stakeminPrevious)
+    {
+        ui->minBox->setText("" + stakemin + "");
+    } else {
+    ui->minBox->setText(stakemin);
+    }
     if(0 > stakemaxPrevious)
     {
         ui->maxBox->setText("" + stakemax + "");
     } else {
     ui->maxBox->setText(stakemax);
+    }
+
+    if(pHardness > hardnessPrevious)
+    {
+        ui->diffBox->setText("" + hardness + "");        
+    } else if(pHardness < hardnessPrevious) {
+        ui->diffBox->setText("" + hardness + "");
+    } else {
+        ui->diffBox->setText(hardness);        
     }
 
     if(pHardness2 > hardnessPrevious2)
@@ -224,7 +235,16 @@ void OverviewPage::updateOverview()
     } else {
         ui->diffBox2->setText(hardness2);
     }
-    	
+    
+    if(pPawrate > netPawratePrevious)
+    {
+        ui->pawrateBox->setText("" + pawrate + "");
+    } else if(pPawrate < netPawratePrevious) {
+        ui->pawrateBox->setText("" + pawrate + " MH/s");
+    } else {
+        ui->pawrateBox->setText(pawrate + " MH/s");
+    }
+	
 	if(Qlpawrate != pawratePrevious)
     {
         ui->localBox->setText("" + Qlpawrate + "");
@@ -249,19 +269,21 @@ void OverviewPage::updateOverview()
     } else {
         ui->volumeBox->setText(qVolume);
     }
-    updatePrevious(nHeight, nNetworkWeight, pHardness2, Qlpawrate, peers, volume);
+    updatePrevious(nHeight, nMinWeight, nNetworkWeight, pHardness, pHardness2, pPawrate, Qlpawrate, peers, volume);
 }
 
-void OverviewPage::updatePrevious(int nHeight, int nNetworkWeight, double pHardness2, QString Qlpawrate, int peers, double volume)
+void OverviewPage::updatePrevious(int nHeight, int nMinWeight, int nNetworkWeight, double pHardness, double pHardness2, double pPawrate, QString Qlpawrate, int peers, double volume)
 {
     heightPrevious = nHeight;	
+    stakeminPrevious = nMinWeight;
     stakemaxPrevious = nNetworkWeight;
+    hardnessPrevious = pHardness;
     hardnessPrevious2 = pHardness2;
+    netPawratePrevious = pPawrate;
 	pawratePrevious = Qlpawrate;
     connectionPrevious = peers;
     volumePrevious = volume;
 }
-
 
 void OverviewPage::setModel(WalletModel *model)
 {
@@ -289,7 +311,7 @@ void OverviewPage::setModel(WalletModel *model)
         connect(model->getOptionsModel(), SIGNAL(displayUnitChanged(int)), this, SLOT(updateDisplayUnit()));
     }
 
-    // update the display unit, to not use the default ("420")
+    // update the display unit, to not use the default ("CHIP")
     updateDisplayUnit();
 }
 
@@ -300,7 +322,7 @@ void OverviewPage::updateDisplayUnit()
         if(currentBalance != -1)
             setBalance(currentBalance, model->getStake(), currentUnconfirmedBalance, currentImmatureBalance);
 
-        // Update txdelegate->unit with the current unit
+
         txdelegate->unit = model->getOptionsModel()->getDisplayUnit();
 
         ui->listTransactions->update();
@@ -309,13 +331,12 @@ void OverviewPage::updateDisplayUnit()
 
 void OverviewPage::setModel2(ClientModel *model2)
 {
-    //updateStatistics();
     this->model2 = model2;
 }
 
 void OverviewPage::showOutOfSyncWarning(bool fShow)
 {
     ui->labelWalletStatus->setVisible(fShow);
-    ui->labelTransactionsStatus->setVisible(fShow);
 	ui->labelNetworkStatus->setVisible(fShow);
+    ui->labelTransactionsStatus->setVisible(fShow);
 }

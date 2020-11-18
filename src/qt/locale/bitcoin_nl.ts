@@ -3,22 +3,22 @@
     <name>AboutDialog</name>
     <message>
         <location filename="../forms/aboutdialog.ui" line="+14"/>
-        <source>About WYTF</source>
-        <translation>Over WYTF</translation>
+        <source>About Chipcoin</source>
+        <translation>Over Chipcoin</translation>
     </message>
     <message>
         <location line="+39"/>
-        <source>&lt;b&gt;WYTF&lt;/b&gt; version</source>
-        <translation>&lt;b&gt;WYTF&lt;/b&gt; versie</translation>
+        <source>&lt;b&gt;Chipcoin&lt;/b&gt; version</source>
+        <translation>&lt;b&gt;Chipcoin&lt;/b&gt; versie</translation>
     </message>
     <message>
         <location line="+41"/>
         <source>Copyright © 2009-2014 The Bitcoin developers
 Copyright © 2012-2014 The NovaCoin developers
-Copyright © 2014 The WYTF developers</source>
+Copyright © 2014 The Chipcoin developers</source>
         <translation>Copyright © 2009-2014 De Bitcoin ontwikkelaars
 Copyright © 2012-2014 De NovaCoin ontwikkelaars
-Copyright © 2014 De WYTF ontwikkelaars</translation>
+Copyright © 2014 De Chipcoin ontwikkelaars</translation>
     </message>
     <message>
         <location line="+15"/>
@@ -65,8 +65,8 @@ Dit product bevat software ontwikkeld door het OpenSSL Project voor gebruik in d
     </message>
     <message>
         <location line="-46"/>
-        <source>These are your WYTF addresses for receiving payments. You may want to give a different one to each sender so you can keep track of who is paying you.</source>
-        <translation>Dit zijn al jou WYTF adressen om betalingen mee te ontvangen. Je kunt iedere verzender een apart adres geven zodat je kunt volgen wie jou betaald.</translation>
+        <source>These are your Chipcoin addresses for receiving payments. You may want to give a different one to each sender so you can keep track of who is paying you.</source>
+        <translation>Dit zijn al jou Chipcoin adressen om betalingen mee te ontvangen. Je kunt iedere verzender een apart adres geven zodat je kunt volgen wie jou betaald.</translation>
     </message>
     <message>
         <location line="+60"/>
@@ -80,8 +80,8 @@ Dit product bevat software ontwikkeld door het OpenSSL Project voor gebruik in d
     </message>
     <message>
         <location line="+11"/>
-        <source>Sign a message to prove you own a WYTF address</source>
-        <translation>Teken een bericht om te bewijzen dat je een WYTF adres bezit.</translation>
+        <source>Sign a message to prove you own a Chipcoin address</source>
+        <translation>Teken een bericht om te bewijzen dat je een Chipcoin adres bezit.</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -95,8 +95,8 @@ Dit product bevat software ontwikkeld door het OpenSSL Project voor gebruik in d
     </message>
     <message>
         <location line="-14"/>
-        <source>Verify a message to ensure it was signed with a specified WYTF address</source>
-        <translation>Verifieer een bericht om zeker te zijn dat deze is ondertekend met een specifiek WYTF adres</translation>
+        <source>Verify a message to ensure it was signed with a specified Chipcoin address</source>
+        <translation>Verifieer een bericht om zeker te zijn dat deze is ondertekend met een specifiek Chipcoin adres</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -263,8 +263,8 @@ Dit product bevat software ontwikkeld door het OpenSSL Project voor gebruik in d
     </message>
     <message>
         <location line="-58"/>
-        <source>WYTF will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your coins from being stolen by malware infecting your computer.</source>
-        <translation>WYTF zal nu sluiten om het versleutel proces te voltooien. Onthou dat het versleutelen van je portemonnee je niet volledig beschermt tegen diefstal van munten door malware op je computer.</translation>
+        <source>Chipcoin will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your coins from being stolen by malware infecting your computer.</source>
+        <translation>Chipcoin zal nu sluiten om het versleutel proces te voltooien. Onthou dat het versleutelen van je portemonnee je niet volledig beschermt tegen diefstal van munten door malware op je computer.</translation>
     </message>
     <message>
         <location line="+13"/>
@@ -377,8 +377,8 @@ Dit product bevat software ontwikkeld door het OpenSSL Project voor gebruik in d
     </message>
     <message>
         <location line="+6"/>
-        <source>Show information about WYTF</source>
-        <translation>Toon informatie over WYTF</translation>
+        <source>Show information about Chipcoin</source>
+        <translation>Toon informatie over Chipcoin</translation>
     </message>
     <message>
         <location line="+2"/>
@@ -427,13 +427,13 @@ Dit product bevat software ontwikkeld door het OpenSSL Project voor gebruik in d
     </message>
     <message>
         <location line="-64"/>
-        <source>Send coins to a WYTF address</source>
-        <translation>Verstuur munten naar een WYTF adres</translation>
+        <source>Send coins to a Chipcoin address</source>
+        <translation>Verstuur munten naar een Chipcoin adres</translation>
     </message>
     <message>
         <location line="+47"/>
-        <source>Modify configuration options for WYTF</source>
-        <translation>Verander configuratie opties voor WYTF</translation>
+        <source>Modify configuration options for Chipcoin</source>
+        <translation>Verander configuratie opties voor Chipcoin</translation>
     </message>
     <message>
         <location line="+18"/>
@@ -472,8 +472,8 @@ Dit product bevat software ontwikkeld door het OpenSSL Project voor gebruik in d
     </message>
     <message>
         <location line="-202"/>
-        <source>WYTF</source>
-        <translation>WYTF</translation>
+        <source>Chipcoin</source>
+        <translation>Chipcoin</translation>
     </message>
     <message>
         <location line="+0"/>
@@ -482,8 +482,8 @@ Dit product bevat software ontwikkeld door het OpenSSL Project voor gebruik in d
     </message>
     <message>
         <location line="+180"/>
-        <source>&amp;About WYTF</source>
-        <translation>&amp;Over WYTF</translation>
+        <source>&amp;About Chipcoin</source>
+        <translation>&amp;Over Chipcoin</translation>
     </message>
     <message>
         <location line="+9"/>
@@ -539,13 +539,13 @@ Dit product bevat software ontwikkeld door het OpenSSL Project voor gebruik in d
     <message>
         <location line="+0"/>
         <location line="+60"/>
-        <source>WYTF client</source>
-        <translation>WYTF client</translation>
+        <source>Chipcoin client</source>
+        <translation>Chipcoin client</translation>
     </message>
     <message numerus="yes">
         <location line="+75"/>
-        <source>%n active connection(s) to WYTF network</source>
-        <translation><numerusform>%n actieve verbinding naar WYTF netwerk</numerusform><numerusform>%n actieve verbindingen naar WYTF netwerk</numerusform></translation>
+        <source>%n active connection(s) to Chipcoin network</source>
+        <translation><numerusform>%n actieve verbinding naar Chipcoin netwerk</numerusform><numerusform>%n actieve verbindingen naar Chipcoin netwerk</numerusform></translation>
     </message>
     <message>
         <location line="+40"/>
@@ -584,13 +584,13 @@ Dit product bevat software ontwikkeld door het OpenSSL Project voor gebruik in d
     </message>
     <message>
         <location line="-312"/>
-        <source>About WYTF card</source>
-        <translation>Over WYTF card</translation>
+        <source>About Chipcoin card</source>
+        <translation>Over Chipcoin card</translation>
     </message>
     <message>
         <location line="+1"/>
-        <source>Show information about WYTF card</source>
-        <translation>Toon informatie over WYTF card</translation>
+        <source>Show information about Chipcoin card</source>
+        <translation>Toon informatie over Chipcoin card</translation>
     </message>
     <message>
         <location line="+18"/>
@@ -669,8 +669,8 @@ Adres: %4
     <message>
         <location line="-15"/>
         <location line="+15"/>
-        <source>URI can not be parsed! This can be caused by an invalid WYTF address or malformed URI parameters.</source>
-        <translation>URI kan niet ontleedt worden! Mogelijke oorzaken zijn een ongeldig WYTF adres of incorrecte URI parameters.</translation>
+        <source>URI can not be parsed! This can be caused by an invalid Chipcoin address or malformed URI parameters.</source>
+        <translation>URI kan niet ontleedt worden! Mogelijke oorzaken zijn een ongeldig Chipcoin adres of incorrecte URI parameters.</translation>
     </message>
     <message>
         <location line="+18"/>
@@ -729,8 +729,8 @@ Adres: %4
     </message>
     <message>
         <location filename="../bitcoin.cpp" line="+109"/>
-        <source>A fatal error occurred. WYTF can no longer continue safely and will quit.</source>
-        <translation>Een fatale fout . WYTF kan niet langer veilig doorgaan en sluit af.</translation>
+        <source>A fatal error occurred. Chipcoin can no longer continue safely and will quit.</source>
+        <translation>Een fatale fout . Chipcoin kan niet langer veilig doorgaan en sluit af.</translation>
     </message>
 </context>
 <context>
@@ -1063,8 +1063,8 @@ Dit betekend dat een fee van %2 is vereist.</translation>
     </message>
     <message>
         <location line="-5"/>
-        <source>The entered address &quot;%1&quot; is not a valid WYTF address.</source>
-        <translation>Het ingevoerde adres &quot;%1&quot; is geen geldig WYTF adres.</translation>
+        <source>The entered address &quot;%1&quot; is not a valid Chipcoin address.</source>
+        <translation>Het ingevoerde adres &quot;%1&quot; is geen geldig Chipcoin adres.</translation>
     </message>
     <message>
         <location line="+10"/>
@@ -1082,8 +1082,8 @@ Dit betekend dat een fee van %2 is vereist.</translation>
     <message>
         <location filename="../guiutil.cpp" line="+420"/>
         <location line="+12"/>
-        <source>WYTF-Qt</source>
-        <translation>WYTF-Qt</translation>
+        <source>Chipcoin-Qt</source>
+        <translation>Chipcoin-Qt</translation>
     </message>
     <message>
         <location line="-12"/>
@@ -1155,13 +1155,13 @@ Dit betekend dat een fee van %2 is vereist.</translation>
     </message>
     <message>
         <location line="+31"/>
-        <source>Automatically start WYTF after logging in to the system.</source>
-        <translation>Automatisch starten van WYTF na inloggen van het systeem.</translation>
+        <source>Automatically start Chipcoin after logging in to the system.</source>
+        <translation>Automatisch starten van Chipcoin na inloggen van het systeem.</translation>
     </message>
     <message>
         <location line="+3"/>
-        <source>&amp;Start WYTF on system login</source>
-        <translation>&amp;Start WYTF bij systeem aanmelding</translation>
+        <source>&amp;Start Chipcoin on system login</source>
+        <translation>&amp;Start Chipcoin bij systeem aanmelding</translation>
     </message>
     <message>
         <location line="+7"/>
@@ -1180,8 +1180,8 @@ Dit betekend dat een fee van %2 is vereist.</translation>
     </message>
     <message>
         <location line="+6"/>
-        <source>Automatically open the WYTF client port on the router. This only works when your router supports UPnP and it is enabled.</source>
-        <translation>De WYTF client poort automatisch openen op de router. Dit werkt alleen wanneer uw router UPnP ondersteunt en deze is ingeschakeld.</translation>
+        <source>Automatically open the Chipcoin client port on the router. This only works when your router supports UPnP and it is enabled.</source>
+        <translation>De Chipcoin client poort automatisch openen op de router. Dit werkt alleen wanneer uw router UPnP ondersteunt en deze is ingeschakeld.</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -1190,8 +1190,8 @@ Dit betekend dat een fee van %2 is vereist.</translation>
     </message>
     <message>
         <location line="+7"/>
-        <source>Connect to the WYTF network through a SOCKS proxy (e.g. when connecting through Tor).</source>
-        <translation>Verbinding maken met het WYTF netwerk via een SOCKS proxy (bijvoorbeeld als U gebruik maakt van Tor)</translation>
+        <source>Connect to the Chipcoin network through a SOCKS proxy (e.g. when connecting through Tor).</source>
+        <translation>Verbinding maken met het Chipcoin netwerk via een SOCKS proxy (bijvoorbeeld als U gebruik maakt van Tor)</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -1265,8 +1265,8 @@ Dit betekend dat een fee van %2 is vereist.</translation>
     </message>
     <message>
         <location line="+13"/>
-        <source>The user interface language can be set here. This setting will take effect after restarting WYTF.</source>
-        <translation>De user interface-taal kan hier ingesteld worden. Deze instelling word toegepast na WYTF opnieuw op te starten.</translation>
+        <source>The user interface language can be set here. This setting will take effect after restarting Chipcoin.</source>
+        <translation>De user interface-taal kan hier ingesteld worden. Deze instelling word toegepast na Chipcoin opnieuw op te starten.</translation>
     </message>
     <message>
         <location line="+11"/>
@@ -1280,8 +1280,8 @@ Dit betekend dat een fee van %2 is vereist.</translation>
     </message>
     <message>
         <location line="+9"/>
-        <source>Whether to show WYTF addresses in the transaction list or not.</source>
-        <translation>WYTF adressen in de transactielijst weergeven of niet</translation>
+        <source>Whether to show Chipcoin addresses in the transaction list or not.</source>
+        <translation>Chipcoin adressen in de transactielijst weergeven of niet</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -1327,8 +1327,8 @@ Dit betekend dat een fee van %2 is vereist.</translation>
     <message>
         <location line="-9"/>
         <location line="+9"/>
-        <source>This setting will take effect after restarting WYTF.</source>
-        <translation>Deze instelling word toegepast na een restart van WYTF.</translation>
+        <source>This setting will take effect after restarting Chipcoin.</source>
+        <translation>Deze instelling word toegepast na een restart van Chipcoin.</translation>
     </message>
     <message>
         <location line="+29"/>
@@ -1346,8 +1346,8 @@ Dit betekend dat een fee van %2 is vereist.</translation>
     <message>
         <location line="+33"/>
         <location line="+231"/>
-        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the WYTF network after a connection is established, but this process has not completed yet.</source>
-        <translation>De weergegeven informatie kan verouderd zijn, Je portemonnee synchroniseerd automatisch met het WYTF netwerk nadat er verbindig is gemaakt, maar dit proces is nog niet voltooid.</translation>
+        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the Chipcoin network after a connection is established, but this process has not completed yet.</source>
+        <translation>De weergegeven informatie kan verouderd zijn, Je portemonnee synchroniseerd automatisch met het Chipcoin netwerk nadat er verbindig is gemaakt, maar dit proces is nog niet voltooid.</translation>
     </message>
     <message>
         <location line="-160"/>
@@ -1562,8 +1562,8 @@ Dit betekend dat een fee van %2 is vereist.</translation>
     </message>
     <message>
         <location line="+7"/>
-        <source>Show the WYTF-Qt help message to get a list with possible WYTF command-line options.</source>
-        <translation>Laat het WYTF-QT help bericht zien om een lijst te krijgen met mogelijke WYTF command-regel opties.</translation>
+        <source>Show the Chipcoin-Qt help message to get a list with possible Chipcoin command-line options.</source>
+        <translation>Laat het Chipcoin-QT help bericht zien om een lijst te krijgen met mogelijke Chipcoin command-regel opties.</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -1582,13 +1582,13 @@ Dit betekend dat een fee van %2 is vereist.</translation>
     </message>
     <message>
         <location line="-104"/>
-        <source>WYTF - Debug window</source>
-        <translation>WYTF - Debugscherm</translation>
+        <source>Chipcoin - Debug window</source>
+        <translation>Chipcoin - Debugscherm</translation>
     </message>
     <message>
         <location line="+25"/>
-        <source>WYTF Core</source>
-        <translation>WYTF Kern</translation>
+        <source>Chipcoin Core</source>
+        <translation>Chipcoin Kern</translation>
     </message>
     <message>
         <location line="+279"/>
@@ -1597,8 +1597,8 @@ Dit betekend dat een fee van %2 is vereist.</translation>
     </message>
     <message>
         <location line="+7"/>
-        <source>Open the WYTF debug log file from the current data directory. This can take a few seconds for large log files.</source>
-        <translation>Open het WYTF debug log bestand van de huidige data map. Dit kan een paar seconden duren voor grote log bestanden.</translation>
+        <source>Open the Chipcoin debug log file from the current data directory. This can take a few seconds for large log files.</source>
+        <translation>Open het Chipcoin debug log bestand van de huidige data map. Dit kan een paar seconden duren voor grote log bestanden.</translation>
     </message>
     <message>
         <location line="+102"/>
@@ -1607,8 +1607,8 @@ Dit betekend dat een fee van %2 is vereist.</translation>
     </message>
     <message>
         <location filename="../rpcconsole.cpp" line="-33"/>
-        <source>Welcome to the WYTF RPC console.</source>
-        <translation>Welkom bij de WYTF RPC console.</translation>
+        <source>Welcome to the Chipcoin RPC console.</source>
+        <translation>Welkom bij de Chipcoin RPC console.</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -1766,8 +1766,8 @@ Dit betekend dat een fee van %2 is vereist.</translation>
     </message>
     <message>
         <location filename="../sendcoinsdialog.cpp" line="-173"/>
-        <source>Enter a WYTF address (e.g. WYTFwwuDea7ejXRdmgNKj4A2SWJ39SRNX3)</source>
-        <translation>Voeg een WYTF adres in (bijv. WYTFwwuDea7ejXRdmgNKj4A2SWJ39SRNX3)</translation>
+        <source>Chipcoin address</source>
+        <translation>Voeg een Chipcoin adres in (bijv. MaRFgKce467n4hZzaV9Vis1Eq5m53KtKa)</translation>
     </message>
     <message>
         <location line="+15"/>
@@ -1866,8 +1866,8 @@ Dit betekend dat een fee van %2 is vereist.</translation>
     </message>
     <message>
         <location line="+251"/>
-        <source>WARNING: Invalid WYTF address</source>
-        <translation>WAARSCHUWING: Ongeldig WYTF adres</translation>
+        <source>WARNING: Invalid Chipcoin address</source>
+        <translation>WAARSCHUWING: Ongeldig Chipcoin adres</translation>
     </message>
     <message>
         <location line="+13"/>
@@ -1910,8 +1910,8 @@ Dit betekend dat een fee van %2 is vereist.</translation>
     </message>
     <message>
         <location line="+18"/>
-        <source>The address to send the payment to  (e.g. WYTFwwuDea7ejXRdmgNKj4A2SWJ39SRNX3)</source>
-        <translation>Het adres om naar te betalen (bijv. WYTFwwuDea7ejXRdmgNKj4A2SWJ39SRNX3)</translation>
+        <source>The address to send the payment to </source>
+        <translation>Het adres om naar te betalen (bijv. MaRFgKce467n4hZzaV9Vis1Eq5m53KtKa)</translation>
     </message>
     <message>
         <location line="+10"/>
@@ -1940,8 +1940,8 @@ Dit betekend dat een fee van %2 is vereist.</translation>
     </message>
     <message>
         <location filename="../sendcoinsentry.cpp" line="+1"/>
-        <source>Enter a WYTF address (e.g. WYTFwwuDea7ejXRdmgNKj4A2SWJ39SRNX3)</source>
-        <translation>Voeg een WYTF adres in (bijv. WYTFwwuDea7ejXRdmgNKj4A2SWJ39SRNX3)</translation>
+        <source>Chipcoin address</source>
+        <translation>Voeg een Chipcoin adres in (bijv. MaRFgKce467n4hZzaV9Vis1Eq5m53KtKa)</translation>
     </message>
 </context>
 <context>
@@ -1964,8 +1964,8 @@ Dit betekend dat een fee van %2 is vereist.</translation>
     </message>
     <message>
         <location line="+18"/>
-        <source>The address to sign the message with (e.g. WYTFwwuDea7ejXRdmgNKj4A2SWJ39SRNX3)</source>
-        <translation>Het adres om het bericht te ondertekenen (bijv. WYTFwwuDea7ejXRdmgNKj4A2SWJ39SRNX3) </translation>
+        <source>The address to sign the message with</source>
+        <translation>Het adres om het bericht te ondertekenen (bijv. MaRFgKce467n4hZzaV9Vis1Eq5m53KtKa) </translation>
     </message>
     <message>
         <location line="+10"/>
@@ -2001,8 +2001,8 @@ Dit betekend dat een fee van %2 is vereist.</translation>
     </message>
     <message>
         <location line="+21"/>
-        <source>Sign the message to prove you own this WYTF address</source>
-        <translation>Teken een bericht om te bewijzen dat je een WYTF adres bezit.</translation>
+        <source>Sign the message to prove you own this Chipcoin address</source>
+        <translation>Teken een bericht om te bewijzen dat je een Chipcoin adres bezit.</translation>
     </message>
     <message>
         <location line="+17"/>
@@ -2028,13 +2028,13 @@ Dit betekend dat een fee van %2 is vereist.</translation>
     </message>
     <message>
         <location line="+21"/>
-        <source>The address the message was signed with (e.g. WYTFwwuDea7ejXRdmgNKj4A2SWJ39SRNX3)</source>
-        <translation>Het adres van het bericht is ondertekend met (bijv. WYTFwwuDea7ejXRdmgNKj4A2SWJ39SRNX3)</translation>
+        <source>The address the message was signed with</source>
+        <translation>Het adres van het bericht is ondertekend met (bijv. MaRFgKce467n4hZzaV9Vis1Eq5m53KtKa)</translation>
     </message>
     <message>
         <location line="+40"/>
-        <source>Verify the message to ensure it was signed with the specified WYTF address</source>
-        <translation>Verifieer een bericht om zeker te zijn dat deze is ondertekend met een specifiek WYTF adres</translation>
+        <source>Verify the message to ensure it was signed with the specified Chipcoin address</source>
+        <translation>Verifieer een bericht om zeker te zijn dat deze is ondertekend met een specifiek Chipcoin adres</translation>
     </message>
     <message>
         <location line="+17"/>
@@ -2044,8 +2044,8 @@ Dit betekend dat een fee van %2 is vereist.</translation>
     <message>
         <location filename="../signverifymessagedialog.cpp" line="+27"/>
         <location line="+3"/>
-        <source>Enter a WYTF address (e.g. WYTFwwuDea7ejXRdmgNKj4A2SWJ39SRNX3)</source>
-        <translation>Voeg een WYTF adres in (bijv. WYTFwwuDea7ejXRdmgNKj4A2SWJ39SRNX3)</translation>
+        <source>Chipcoin address</source>
+        <translation>Voeg een Chipcoin adres in (bijv. MaRFgKce467n4hZzaV9Vis1Eq5m53KtKa)</translation>
     </message>
     <message>
         <location line="-2"/>
@@ -2054,8 +2054,8 @@ Dit betekend dat een fee van %2 is vereist.</translation>
     </message>
     <message>
         <location line="+3"/>
-        <source>Enter WYTF signature</source>
-        <translation>Voer WYTF handtekening in</translation>
+        <source>Enter Chipcoin signature</source>
+        <translation>Voer Chipcoin handtekening in</translation>
     </message>
     <message>
         <location line="+82"/>
@@ -2625,8 +2625,8 @@ Dit betekend dat een fee van %2 is vereist.</translation>
     <name>bitcoin-core</name>
     <message>
         <location filename="../bitcoinstrings.cpp" line="+33"/>
-        <source>WYTF version</source>
-        <translation>WYTF versie</translation>
+        <source>Chipcoin version</source>
+        <translation>Chipcoin versie</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -2635,8 +2635,8 @@ Dit betekend dat een fee van %2 is vereist.</translation>
     </message>
     <message>
         <location line="+1"/>
-        <source>Send command to -server or wytfd</source>
-        <translation>Verstuur commando naar -server of wytfd</translation>
+        <source>Send command to -server or chipcoind</source>
+        <translation>Verstuur commando naar -server of chipcoind</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -2655,13 +2655,13 @@ Dit betekend dat een fee van %2 is vereist.</translation>
     </message>
     <message>
         <location line="+2"/>
-        <source>Specify configuration file (default: wytf.conf)</source>
-        <translation>Selecteer configuratie bestand (standaard: wytf.conf)</translation>
+        <source>Specify configuration file (default: chipcoin.conf)</source>
+        <translation>Selecteer configuratie bestand (standaard: chipcoin.conf)</translation>
     </message>
     <message>
         <location line="+1"/>
-        <source>Specify pid file (default: wytfd.pid)</source>
-        <translation>Selecteer pid bestand (standaard: wytf.conf)</translation>
+        <source>Specify pid file (default: chipcoind.pid)</source>
+        <translation>Selecteer pid bestand (standaard: chipcoin.conf)</translation>
     </message>
     <message>
         <location line="+2"/>
@@ -2810,8 +2810,8 @@ Dit betekend dat een fee van %2 is vereist.</translation>
     </message>
     <message>
         <location line="+61"/>
-        <source>Warning: Please check that your computer&apos;s date and time are correct! If your clock is wrong WYTF will not work properly.</source>
-        <translation>Waarschuwing: Controleer of de datum en tijd van de computer juist zijn! Als uw klok verkeerd is WYTF zal niet goed werken.</translation>
+        <source>Warning: Please check that your computer&apos;s date and time are correct! If your clock is wrong Chipcoin will not work properly.</source>
+        <translation>Waarschuwing: Controleer of de datum en tijd van de computer juist zijn! Als uw klok verkeerd is Chipcoin zal niet goed werken.</translation>
     </message>
     <message>
         <location line="-31"/>
@@ -3000,24 +3000,24 @@ Dit betekend dat een fee van %2 is vereist.</translation>
         <source>%s, you must set a rpcpassword in the configuration file:
  %s
 It is recommended you use the following random password:
-rpcuser=WYTFrpc
+rpcuser=Chipcoinrpc
 rpcpassword=%s
 (you do not need to remember this password)
 The username and password MUST NOT be the same.
 If the file does not exist, create it with owner-readable-only file permissions.
 It is also recommended to set alertnotify so you are notified of problems;
-for example: alertnotify=echo %%s | mail -s &quot;WYTF Alert&quot; admin@foo.com
+for example: alertnotify=echo %%s | mail -s &quot;Chipcoin Alert&quot; admin@foo.com
 </source>
         <translation>%s, u moet een rpcpassword instellen in het configuratiebestand: 
 %s 
 Het wordt aanbevolen de volgende willekeurig wachtwoord gebruiken: 
-rpcuser = WYTFrpc 
+rpcuser = Chipcoinrpc 
 rpcpassword = %s 
 (je hoeft niet dit wachtwoord te onthouden) 
 De gebruikersnaam en het wachtwoord MAG NIET hetzelfde zijn. 
 Als het bestand niet bestaat, maakt u met leesbare-alleen-eigenaar bestandsbeheermachtigingen.  
 Het wordt ook aanbevolen om alertnotify instellen zodat u een melding van problemen;  
-bijvoorbeeld: alertnotify = echo %%s | mail -s &quot;WYTF Alert&quot; admin@foo.com </translation>
+bijvoorbeeld: alertnotify = echo %%s | mail -s &quot;Chipcoin Alert&quot; admin@foo.com </translation>
     </message>
     <message>
         <location line="+51"/>
@@ -3141,13 +3141,13 @@ bijvoorbeeld: alertnotify = echo %%s | mail -s &quot;WYTF Alert&quot; admin@foo.
     </message>
     <message>
         <location line="+1"/>
-        <source>Cannot obtain a lock on data directory %s.  WYTF is probably already running.</source>
-        <translation>Kan een slot op data directory %s niet verkrijgen. WYTF wordt waarschijnlijk al uitgevoerd.</translation>
+        <source>Cannot obtain a lock on data directory %s.  Chipcoin is probably already running.</source>
+        <translation>Kan een slot op data directory %s niet verkrijgen. Chipcoin wordt waarschijnlijk al uitgevoerd.</translation>
     </message>
     <message>
         <location line="-98"/>
-        <source>WYTF</source>
-        <translation>WYTF</translation>
+        <source>Chipcoin</source>
+        <translation>Chipcoin</translation>
     </message>
     <message>
         <location line="+140"/>
@@ -3181,13 +3181,13 @@ bijvoorbeeld: alertnotify = echo %%s | mail -s &quot;WYTF Alert&quot; admin@foo.
     </message>
     <message>
         <location line="+4"/>
-        <source>Error loading wallet.dat: Wallet requires newer version of WYTF</source>
-        <translation>Fout bij laden van wallet.dat: Portemonnee vereist een nieuwere versie van WYTF</translation>
+        <source>Error loading wallet.dat: Wallet requires newer version of Chipcoin</source>
+        <translation>Fout bij laden van wallet.dat: Portemonnee vereist een nieuwere versie van Chipcoin</translation>
     </message>
     <message>
         <location line="+1"/>
-        <source>Wallet needed to be rewritten: restart WYTF to complete</source>
-        <translation>Portemonnee moet herschreven worden: herstart WYTF om te voltooien</translation>
+        <source>Wallet needed to be rewritten: restart Chipcoin to complete</source>
+        <translation>Portemonnee moet herschreven worden: herstart Chipcoin om te voltooien</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -3256,8 +3256,8 @@ bijvoorbeeld: alertnotify = echo %%s | mail -s &quot;WYTF Alert&quot; admin@foo.
     </message>
     <message>
         <location line="+122"/>
-        <source>Unable to bind to %s on this computer. WYTF is probably already running.</source>
-        <translation>Niet mogelijk om %s op deze computer. WYTF is waarschijnlijk al geopened.</translation>
+        <source>Unable to bind to %s on this computer. Chipcoin is probably already running.</source>
+        <translation>Niet mogelijk om %s op deze computer. Chipcoin is waarschijnlijk al geopened.</translation>
     </message>
     <message>
         <location line="-97"/>

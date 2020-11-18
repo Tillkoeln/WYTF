@@ -39,7 +39,7 @@ QString TransactionDesc::toHTML(CWallet *wallet, CWalletTx &wtx)
     {
         LOCK(wallet->cs_wallet);
         strHTML.reserve(4000);
-        strHTML += "<html><font face='verdana, arial, helvetica, sans-serif'>";
+        strHTML += "<html><font face='Inconsolata, verdana, arial, helvetica, sans-serif' size='12px'>";
 
         int64_t nTime = wtx.GetTxTime();
         int64_t nCredit = wtx.GetCredit();
@@ -218,7 +218,7 @@ QString TransactionDesc::toHTML(CWallet *wallet, CWalletTx &wtx)
         strHTML += "<b>" + tr("Transaction ID") + ":</b> " + wtx.GetHash().ToString().c_str() + "<br>";
 
         if (wtx.IsCoinBase() || wtx.IsCoinStake())
-            strHTML += "<br>" + tr("Generated coins must mature 5 blocks before they can be spent. When you generated this block, it was broadcast to the network to be added to the block chain. If it fails to get into the chain, its state will change to \"not accepted\" and it won't be spendable. This may occasionally happen if another node generates a block within a few seconds of yours.") + "<br>";
+            strHTML += "<br>" + tr("Generated coins must mature 18 blocks before they can be spent. When you generated this block, it was broadcast to the network to be added to the block chain. If it fails to get into the chain, its state will change to \"not accepted\" and it won't be spendable. This may occasionally happen if another node generates a block within a few seconds of yours.") + "<br>";
 
         //
         // Debug view

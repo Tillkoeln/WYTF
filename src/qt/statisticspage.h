@@ -19,21 +19,29 @@ public:
     ~StatisticsPage();
     
     void setModel(ClientModel *model);
+	void setModel2(ClientModel *model2);
+	void showOutOfSyncWarning(bool fShow);
     void updatePlot();
 	void updatePlot2();
-	void setStrength(double strength);
 
 private slots:
 
 private:
     Ui::StatisticsPage *ui;
     ClientModel *model;
+	ClientModel *model2;
 	
 	QVector<double> vX;
 	QVector<double> vY;
 	
 	QVector<double> vX3;
 	QVector<double> vY3;
+
+	QVector<double> vX2;
+	QVector<double> vY2;
+	
+	QVector<double> vX4;
+	QVector<double> vY4;
 	
 	double currentStrength;
 };

@@ -52,10 +52,12 @@ AddressBookPage::AddressBookPage(Mode mode, Tabs tab, QWidget *parent) :
     {
     case SendingTab:
         ui->labelExplanation->setVisible(false);
+		ui->labelExplanation2->setVisible(true);
         ui->deleteButton->setVisible(true);
         ui->signMessage->setVisible(false);
         break;
     case ReceivingTab:
+		ui->labelExplanation2->setVisible(false);
         ui->deleteButton->setVisible(false);
         ui->signMessage->setVisible(true);
         break;

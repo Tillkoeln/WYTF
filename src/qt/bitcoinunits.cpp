@@ -34,9 +34,9 @@ QString BitcoinUnits::name(int unit)
 {
     switch(unit)
     {
-    case BTC: return QString("WYTF");
-    case mBTC: return QString("mWYTF");
-    case uBTC: return QString::fromUtf8("μWYTF");
+    case BTC: return QString("CHIP");
+    case mBTC: return QString("mCHIP");
+    case uBTC: return QString::fromUtf8("μCHIP");
     default: return QString("???");
     }
 }
@@ -45,9 +45,9 @@ QString BitcoinUnits::description(int unit)
 {
     switch(unit)
     {
-    case BTC: return QString("WYTFs");
-    case mBTC: return QString("Milli-WYTFs (1 / 1,000)");
-    case uBTC: return QString("Micro-WYTFs (1 / 1,000,000)");
+    case BTC: return QString("Chipcoins");
+    case mBTC: return QString("Milli-Chipcoins (1 / 1,000)");
+    case uBTC: return QString("Micro-Chipcoins (1 / 1,000,000)");
     default: return QString("???");
     }
 }
@@ -103,6 +103,32 @@ QString BitcoinUnits::format(int unit, qint64 n, bool fPlus)
     int nTrim = 0;
     for (int i = remainder_str.size()-1; i>=2 && (remainder_str.at(i) == '0'); --i)
         ++nTrim;
+    remainder_str.chop(nTrim);
+
+    if (n < 0)
+        quotient_str.insert(0, '-');
+    else if (fPlus && n > 0)
+        quotient_str.insert(0, '+');
+    return quotient_str + QString(".") + remainder_str;
+}
+
+QString BitcoinUnits::formatGrowth(int unit, qint64 n, bool fPlus)
+{
+    // Note: not using straight sprintf here because we do NOT want
+    // localized number formatting.
+    if(!valid(unit))
+        return QString(); // Refuse to format invalid unit
+    qint64 coin = factor(unit);
+    int num_decimals = decimals(unit);
+    qint64 n_abs = (n > 0 ? n : -n);
+    qint64 quotient = n_abs / coin;
+    qint64 remainder = n_abs % coin;
+    QString quotient_str = QString::number(quotient);
+    QString remainder_str = QString::number(remainder).rightJustified(num_decimals, '0');
+
+    // Right-trim excess zeros after the decimal point
+    int nTrim = 4;
+
     remainder_str.chop(nTrim);
 
     if (n < 0)

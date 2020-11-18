@@ -10,21 +10,155 @@
     <height>380</height>
    </rect>
   </property>
+  <property name="font">
+   <font>
+    <family>Inconsolata</family>
+   </font>
+  </property>
   <property name="windowTitle">
    <string>Address Book</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">font-family: Inconsolata;</string>
+  </property>
   <layout class="QVBoxLayout" name="verticalLayout">
+   <property name="topMargin">
+    <number>11</number>
+   </property>
    <item>
-    <widget class="QLabel" name="labelExplanation">
-     <property name="text">
-      <string>These are your WYTF addresses for receiving payments. You may want to give a different one to each sender so you can keep track of who is paying you.</string>
+    <widget class="QWidget" name="labelExplanation" native="true">
+     <property name="maximumSize">
+      <size>
+       <width>16777215</width>
+       <height>38</height>
+      </size>
      </property>
-     <property name="textFormat">
-      <enum>Qt::PlainText</enum>
+     <property name="styleSheet">
+      <string notr="true">background-color: #1C1C1F;</string>
      </property>
-     <property name="wordWrap">
-      <bool>true</bool>
+     <layout class="QHBoxLayout" name="horizontalLayout_4_1_2">
+      <property name="spacing">
+       <number>6</number>
+      </property>
+      <property name="topMargin">
+       <number>9</number>
+      </property>
+      <item>
+       <widget class="QLabel" name="label_2">
+        <property name="minimumSize">
+         <size>
+          <width>16</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/icons/addresses&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_5_1_2">
+        <property name="font">
+         <font>
+          <family>Inconsolata</family>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">margin-top:2px;</string>
+        </property>
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:13px; font-weight:600; color:#eff0f1;&quot;&gt; Receiving Addresses &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer_2_1_2">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QWidget" name="labelExplanation2" native="true">
+     <property name="maximumSize">
+      <size>
+       <width>16777215</width>
+       <height>38</height>
+      </size>
      </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: #1C1C1F;</string>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout_4_1_2_2">
+      <property name="spacing">
+       <number>6</number>
+      </property>
+      <property name="topMargin">
+       <number>9</number>
+      </property>
+      <item>
+       <widget class="QLabel" name="label_2_22">
+        <property name="minimumSize">
+         <size>
+          <width>16</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/icons/address-book3&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_5_1_2_2">
+        <property name="font">
+         <font>
+          <family>Inconsolata</family>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">margin-top:2px;</string>
+        </property>
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:13px; font-weight:600; color:#eff0f1;&quot;&gt; Contacts &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer_2_1_2_2">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+     </layout>
     </widget>
    </item>
    <item>
@@ -81,7 +215,7 @@
        </property>
        <property name="icon">
         <iconset resource="../bitcoin.qrc">
-         <normaloff>:/icons/editcopy2</normaloff>:/icons/editcopy2</iconset>
+         <normaloff>:/icons/editcopy</normaloff>:/icons/editcopy</iconset>
        </property>
       </widget>
      </item>
@@ -92,35 +226,35 @@
        </property>
        <property name="icon">
         <iconset resource="../bitcoin.qrc">
-         <normaloff>:/icons/qrcode2</normaloff>:/icons/qrcode2</iconset>
+         <normaloff>:/icons/qrcode</normaloff>:/icons/qrcode</iconset>
        </property>
       </widget>
      </item>
      <item>
       <widget class="QPushButton" name="signMessage">
        <property name="toolTip">
-        <string>Sign a message to prove you own a WYTF address</string>
+        <string>Sign a message to prove you own a Chipcoin address</string>
        </property>
        <property name="text">
         <string>Sign &amp;Message</string>
        </property>
        <property name="icon">
         <iconset resource="../bitcoin.qrc">
-         <normaloff>:/icons/edit2</normaloff>:/icons/edit2</iconset>
+         <normaloff>:/icons/edit</normaloff>:/icons/edit</iconset>
        </property>
       </widget>
      </item>
      <item>
       <widget class="QPushButton" name="verifyMessage">
        <property name="toolTip">
-        <string>Verify a message to ensure it was signed with a specified WYTF address</string>
+        <string>Verify a message to ensure it was signed with a specified Chipcoin address</string>
        </property>
        <property name="text">
         <string>&amp;Verify Message</string>
        </property>
        <property name="icon">
         <iconset resource="../bitcoin.qrc">
-         <normaloff>:/icons/verify</normaloff>:/icons/verify</iconset>
+         <normaloff>:/icons/verify2</normaloff>:/icons/verify2</iconset>
        </property>
       </widget>
      </item>

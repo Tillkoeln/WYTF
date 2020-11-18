@@ -1,6 +1,6 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2016 The Bitcoin developers
-// Copyright (c) 2019 The WYTF Foundation
+// Copyright (c) 2016 The Chipcoin developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -18,7 +18,7 @@ using namespace std;
 extern unsigned int nStakeMaxAge;
 
 unsigned int nStakeSplitAge = 1 * 24 * 60 * 60;
-int64_t nStakeCombineThreshold = 77 * COIN;
+int64_t nStakeCombineThreshold = 200 * COIN;
 
 //////////////////////////////////////////////////////////////////////////////
 //
@@ -1332,7 +1332,12 @@ bool CWallet::SelectCoinsSimple(int64_t nTargetValue, unsigned int nSpendTime, i
     {
         const CWalletTx *pcoin = output.tx;
         int i = output.i;
-
+		
+		// Don't select locked coins
+		COutPoint outpoint(pcoin->GetHash(), output.i);
+		if(std::find(this->lockedcoins.vLockedCoins.begin(), this->lockedcoins.vLockedCoins.end(), outpoint) != this->lockedcoins.vLockedCoins.end())
+			continue;
+		
         // Stop if we've chosen enough inputs
         if (nValueRet >= nTargetValue)
             break;
@@ -1739,7 +1744,7 @@ bool CWallet::CreateCoinStake(const CKeyStore& keystore, unsigned int nBits, int
     if (nCredit == 0 || nCredit > nBalance - nReserveBalance)
         return false;
 
-    BOOST_FOREACH(PAIRTYPE(const CWalletTx*, unsigned int) pcoin, setCoins)
+    /*BOOST_FOREACH(PAIRTYPE(const CWalletTx*, unsigned int) pcoin, setCoins)
     {
         // Attempt to add more inputs
         // Only add coins of the same key/address as kernel
@@ -1768,18 +1773,18 @@ bool CWallet::CreateCoinStake(const CKeyStore& keystore, unsigned int nBits, int
             nCredit += pcoin.first->vout[pcoin.second].nValue;
             vwtxPrev.push_back(pcoin.first);
         }
-    }
+    } */
 
     // Calculate coin age reward
-	
 	int64_t nReward;
-    {
+	{
         uint64_t nCoinAge;
+		unsigned int nGrowth;
         CTxDB txdb("r");
-        if (!txNew.GetCoinAge(txdb, nCoinAge))
+        if (!txNew.GetCoinAge(txdb, nCoinAge, nGrowth))
             return error("CreateCoinStake : failed to calculate coin age");
 
-        nReward = GetProofOfStakeReward(nCoinAge, nFees);
+        nReward = GetProofOfStakeReward(nCoinAge, nFees, nGrowth);
         if (nReward <= 0)
             return false;
 

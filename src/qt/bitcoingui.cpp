@@ -30,6 +30,7 @@
 #include "wallet.h"
 #include "blockbrowser.h"
 #include "stakereportdialog.h"
+#include "information.h"
 
 #ifdef Q_OS_MAC
 #include "macdockiconhandler.h"
@@ -61,6 +62,7 @@
 #include <QDragEnterEvent>
 #include <QUrl>
 #include <QStyle>
+#include <QFontDatabase>
 
 #include <iostream>
 
@@ -85,8 +87,10 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
 	multisendDialog(0)
 {
     updateStyle();
-    resize(1000, 600);
-    setWindowTitle(tr("WYTF [WYTF]") + " - " + (QString::fromStdString(FormatFullVersion()).split("-")[0]));
+    resize(966, 642);
+    setWindowTitle(tr("Chipcoin [CHIP]") + " - " + (QString::fromStdString(FormatFullVersion()).split("-")[0]));
+	QFontDatabase fontData;
+	fontData.addApplicationFont(":/fonts/chipfont");
 #ifndef Q_OS_MAC
     qApp->setWindowIcon(QIcon(":icons/bitcoin"));
     setWindowIcon(QIcon(":icons/bitcoin"));
@@ -128,6 +132,8 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
 	multisendDialog = new MultisendDialog(this);
     
     signVerifyMessageDialog = new SignVerifyMessageDialog(this);
+	
+	informationPage = new InFormation(this);
 
     centralWidget = new QStackedWidget(this);
     centralWidget->addWidget(overviewPage);
@@ -138,6 +144,7 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
 	centralWidget->addWidget(statisticsPage);
 	centralWidget->addWidget(multisendDialog);
     centralWidget->addWidget(blockBrowser);
+	centralWidget->addWidget(informationPage);
     setCentralWidget(centralWidget);
 
      // Create status bar
@@ -146,8 +153,8 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     // Status bar notification icons
     QFrame *frameBlocks = new QFrame();
     frameBlocks->setContentsMargins(0,0,0,0);
-    frameBlocks->setMinimumWidth(98);
-    frameBlocks->setMaximumWidth(98);
+    frameBlocks->setMinimumWidth(156);
+    frameBlocks->setMaximumWidth(156);
     QHBoxLayout *frameBlocksLayout = new QHBoxLayout(frameBlocks);
     frameBlocksLayout->setContentsMargins(0,0,0,0);
     frameBlocksLayout->setSpacing(3);
@@ -194,8 +201,8 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     statusBar()->addWidget(progressBar);
     statusBar()->addPermanentWidget(frameBlocks);
 
-    syncIconMovie = new QMovie(":/movies/update_spinner", "png", this);
-    stakingOnMovie = new QMovie(":/movies/staking_on", "png", this);
+    syncIconMovie = new QMovie(":/icons/update_spinner", "png", this);
+    stakingOnMovie = new QMovie(":/icons/staking_on", "png", this);
 
     // Clicking on a transaction on the overview page simply sends you to transaction history page
     connect(overviewPage, SIGNAL(transactionClicked(QModelIndex)), this, SLOT(gotoHistoryPage()));
@@ -219,8 +226,6 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     connect(receiveCoinsPage, SIGNAL(signMessage(QString)), this, SLOT(gotoSignMessageTab(QString)));
     // Clicking on "Block Explorer" in the transaction page sends you to the blockbrowser
     connect(transactionView, SIGNAL(blockBrowserSignal(QString)), this, SLOT(gotoBlockBrowser(QString)));
-	// Clicking on stake for multisend button in the address book sends you to the multisend page
-    connect(addressBookPage, SIGNAL(multisendSignal(QString)), this, SLOT(multisendClicked(QString)));
 
     gotoOverviewPage();
 }
@@ -238,41 +243,46 @@ void BitcoinGUI::createActions()
 {
     QActionGroup *tabGroup = new QActionGroup(this);
 
-    overviewAction = new QAction(QIcon(":/icons/overview2"), tr("&Overview"), this);
+    overviewAction = new QAction(QIcon(":/icons/overview"), tr("&Overview"), this);
     overviewAction->setToolTip(tr("Show general overview of your wallet"));
     overviewAction->setCheckable(true);
     overviewAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_1));
-    tabGroup->addAction(overviewAction);	
-	
+    tabGroup->addAction(overviewAction);
+
     sendCoinsAction = new QAction(QIcon(":/icons/send2"), tr("&Send"), this);
-    sendCoinsAction->setToolTip(tr("Send coins to a WYTF address"));
+    sendCoinsAction->setToolTip(tr("Send Chipcoin"));
     sendCoinsAction->setCheckable(true);
     sendCoinsAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_2));
     tabGroup->addAction(sendCoinsAction);
 
     receiveCoinsAction = new QAction(QIcon(":/icons/receiving_addresses2"), tr("&Receive"), this);
-    receiveCoinsAction->setToolTip(tr("Show the list of addresses for receiving payments"));
+    receiveCoinsAction->setToolTip(tr("Show the list of addresses for receiving Chipcoin"));
     receiveCoinsAction->setCheckable(true);
     receiveCoinsAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_3));
     tabGroup->addAction(receiveCoinsAction);
 
-    historyAction = new QAction(QIcon(":/icons/history2"), tr("&Transactions"), this);
+    historyAction = new QAction(QIcon(":/icons/history"), tr("&Transactions"), this);
     historyAction->setToolTip(tr("Browse transaction history"));
     historyAction->setCheckable(true);
     historyAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_4));
     tabGroup->addAction(historyAction);
 
-    addressBookAction = new QAction(QIcon(":/icons/address-book2"), tr("&Address Book"), this);
+    addressBookAction = new QAction(QIcon(":/icons/address-book2"), tr("&Contacts"), this);
     addressBookAction->setToolTip(tr("Edit the list of stored addresses and labels"));
     addressBookAction->setCheckable(true);
     addressBookAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_5));
     tabGroup->addAction(addressBookAction);
 	
     statisticsAction = new QAction(QIcon(":/icons/statistics"), tr("&Statistics"), this);
-    statisticsAction->setToolTip(tr("View statistics"));
+    statisticsAction->setToolTip(tr("View network statistics"));
     statisticsAction->setCheckable(true);
 	statisticsAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_6));
     tabGroup->addAction(statisticsAction);	
+	
+	informationAction = new QAction(QIcon(":/icons/information"), tr("&Information"), this);
+    informationAction ->setToolTip(tr("Information and links about Chipcoin "));
+    informationAction ->setCheckable(true);
+    tabGroup->addAction(informationAction);
 	   
     connect(overviewAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
     connect(overviewAction, SIGNAL(triggered()), this, SLOT(gotoOverviewPage()));
@@ -283,22 +293,24 @@ void BitcoinGUI::createActions()
     connect(historyAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
     connect(historyAction, SIGNAL(triggered()), this, SLOT(gotoHistoryPage()));
     connect(addressBookAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
-    connect(addressBookAction, SIGNAL(triggered()), this, SLOT(gotoAddressBookPage()));		
+    connect(addressBookAction, SIGNAL(triggered()), this, SLOT(gotoAddressBookPage()));
+	connect(informationAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
+    connect(informationAction, SIGNAL(triggered()), this, SLOT(gotoInFormationPage()));	
     
     quitAction = new QAction(QIcon(":/icons/quit"), tr("E&xit"), this);
     quitAction->setStatusTip(tr("Quit application"));
     quitAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_Q));
     quitAction->setMenuRole(QAction::QuitRole);
-    aboutAction = new QAction(QIcon(":/icons/bitcoin"), tr("&About WYTF"), this);
-    aboutAction->setStatusTip(tr("Show information about WYTF"));
+    aboutAction = new QAction(QIcon(":/icons/chipcoin"), tr("&About Chipcoin"), this);
+    aboutAction->setStatusTip(tr("Show information about Chipcoin"));
     aboutAction->setMenuRole(QAction::AboutRole);
     aboutQtAction = new QAction(QIcon(":/icons/qt"), tr("About &Qt"), this);
     aboutQtAction->setStatusTip(tr("Show information about Qt"));
     aboutQtAction->setMenuRole(QAction::AboutQtRole);
     optionsAction = new QAction(QIcon(":/icons/options"), tr("&Options..."), this);
-    optionsAction->setStatusTip(tr("Modify configuration options for WYTF"));
+    optionsAction->setStatusTip(tr("Modify configuration options for Chipcoin"));
     optionsAction->setMenuRole(QAction::PreferencesRole);
-    toggleHideAction = new QAction(QIcon(":/icons/bitcoin"), tr("&Show / Hide"), this);
+    toggleHideAction = new QAction(QIcon(":/icons/chipcoin"), tr("&Show / Hide"), this);
     encryptWalletAction = new QAction(QIcon(":/icons/lock_closed"), tr("&Encrypt Wallet..."), this);
     encryptWalletAction->setStatusTip(tr("Encrypt or decrypt wallet"));
     encryptWalletAction->setCheckable(true);
@@ -311,31 +323,28 @@ void BitcoinGUI::createActions()
     lockWalletAction = new QAction(QIcon(":/icons/lock_closed"), tr("&Lock Wallet"), this);
     lockWalletAction->setStatusTip(tr("Lock wallet"));
     signMessageAction = new QAction(QIcon(":/icons/edit"), tr("Sign &message..."), this);
-    verifyMessageAction = new QAction(QIcon(":/icons/verify"), tr("&Verify message..."), this);
+    verifyMessageAction = new QAction(QIcon(":/icons/verify2"), tr("&Verify message..."), this);
+
 	checkWalletAction = new QAction(QIcon(":/icons/checkwallet"), tr("&Check Wallet..."), this);
 	checkWalletAction->setStatusTip(tr("Check wallet integrity and report findings"));
+
 	repairWalletAction = new QAction(QIcon(":/icons/repairwallet"), tr("&Repair Wallet..."), this);
-	repairWalletAction->setStatusTip(tr("Fix wallet integrity and remove orphans"));	
-	stakeReportAction = new QAction(QIcon(":/icons/stakejournal"), tr("Stake Report"), this);
-    stakeReportAction->setToolTip(tr("Open the Stake Report Box"));	
-    exportAction = new QAction(QIcon(":/icons/export2"), tr("&Export..."), this);
-    exportAction->setStatusTip(tr("Export the data in the current tab to a file"));
-    openRPCConsoleAction = new QAction(QIcon(":/icons/debugwindow2"), tr("&Debug Window"), this);
-    openRPCConsoleAction->setStatusTip(tr("Open debugging and diagnostic console"));	
-    blockAction = new QAction(QIcon(":/icons/blockbrowser2"), tr("&Block Browser"), this);
-    blockAction->setToolTip(tr("Explore the BlockChain"));	
+	repairWalletAction->setStatusTip(tr("Fix wallet integrity and remove orphans"));
+
+	
+	stakeReportAction = new QAction(QIcon(":/icons/stakinglog"), tr("Staking Log"), this);
+    stakeReportAction->setToolTip(tr("View your staking log"));
+
+    exportAction = new QAction(QIcon(":/icons/export"), tr("&Export..."), this);
+    exportAction->setToolTip(tr("Export the data in the current tab to a file"));
+    openRPCConsoleAction = new QAction(QIcon(":/icons/debugwindow"), tr("&Debug window"), this);
+    openRPCConsoleAction->setToolTip(tr("Open debugging and diagnostic console"));
+	
+    blockAction = new QAction(QIcon(":/icons/blockbrowser"), tr("&Block Browser"), this);
+    blockAction->setToolTip(tr("Explore the BlockChain"));
+	
 	multisendAction = new QAction(QIcon(":/icons/multisend"), tr("&MultiSend"), this);
     multisendAction->setToolTip(tr("MultiSend Settings"));	
-	resourcesWYTFAction = new QAction(QIcon(":/icons/web-main"), tr("&wytf.co"), this);
-	resourcesWYTFAction->setToolTip(tr("Visit the Official WYTF website"));
-	resourcesCHAINAction = new QAction(QIcon(":/icons/web-chain"), tr("&Blockchain Explorer"), this);
-	resourcesCHAINAction->setToolTip(tr("Visit the Official WYTF Blockchain Explorer"));				
-	resourcesTWITTERAction = new QAction(QIcon(":/icons/web-twitter"), tr("&Twitter"), this);
-	resourcesTWITTERAction->setToolTip(tr("Visit the Official WYTF Twitter"));
-	resourcesBTCTAction = new QAction(QIcon(":/icons/web-btct"), tr("&Discussion Forum"), this);
-	resourcesBTCTAction->setToolTip(tr("Visit the WYTF discussion forum on bitcointalk.org"));
-	resourcesYOBITAction = new QAction(QIcon(":/icons/web-yobit"), tr("&Yobit.net - WYTF/BTC"), this);
-	resourcesYOBITAction->setToolTip(tr("Visit the WYTF market on Yobit.net"));
 
     connect(quitAction, SIGNAL(triggered()), qApp, SLOT(quit()));
     connect(aboutAction, SIGNAL(triggered()), this, SLOT(aboutClicked()));
@@ -354,12 +363,6 @@ void BitcoinGUI::createActions()
 	connect(statisticsAction, SIGNAL(triggered()), this, SLOT(gotoStatisticsPage()));
     connect(blockAction, SIGNAL(triggered()), this, SLOT(gotoBlockBrowser()));
 	connect(stakeReportAction, SIGNAL(triggered()), this, SLOT(stakeReportClicked()));
-	connect(resourcesWYTFAction, SIGNAL(triggered()), this, SLOT(resourcesWYTFClicked()));
-	connect(resourcesCHAINAction, SIGNAL(triggered()), this, SLOT(resourcesCHAINClicked()));;
-	connect(resourcesTWITTERAction, SIGNAL(triggered()), this, SLOT(resourcesTWITTERClicked()));		
-	connect(resourcesBTCTAction, SIGNAL(triggered()), this, SLOT(resourcesBTCTClicked()));
-	connect(resourcesYOBITAction, SIGNAL(triggered()), this, SLOT(resourcesYOBITClicked()));
-
 }
 
 void BitcoinGUI::createMenuBar()
@@ -393,22 +396,11 @@ void BitcoinGUI::createMenuBar()
     settings->addSeparator();
     settings->addAction(optionsAction);
 
-    QMenu *info = appMenuBar->addMenu(tr("&Info"));
-    info->addAction(openRPCConsoleAction);
-    info->addSeparator();
-    info->addAction(aboutAction);
-    info->addAction(aboutQtAction);
-	
-	QMenu *resources = appMenuBar->addMenu(tr("&Resources"));
-    resources->addAction(resourcesWYTFAction);
-    resources->addAction(resourcesCHAINAction);
-    resources->addSeparator();
-    resources->addAction(resourcesTWITTERAction);
-    resources->addAction(resourcesBTCTAction);
-	resources->addSeparator();
-	resources->addAction(resourcesYOBITAction);
-
-	
+    QMenu *help = appMenuBar->addMenu(tr("&Help"));
+    help->addAction(openRPCConsoleAction);
+    help->addSeparator();
+    help->addAction(aboutAction);
+    help->addAction(aboutQtAction);		
 }
 
 static QWidget* makeToolBarSpacer()
@@ -422,33 +414,33 @@ static QWidget* makeToolBarSpacer()
 void BitcoinGUI::createToolBars()
 {
 	mainIcon = new QLabel (this);
-    mainIcon->setPixmap(QPixmap(":icons/logo"));
+    mainIcon->setPixmap(QPixmap(":icons/sidebartop"));
     mainIcon->show();
 	
-	QToolBar *toolbar2 = addToolBar(tr("WYTF top-logo"));
-	addToolBar(Qt::LeftToolBarArea,toolbar2);
-    toolbar2->setOrientation(Qt::Horizontal);
-    toolbar2->setFloatable(false);
-    toolbar2->setMovable(false);
-    toolbar2->addWidget(mainIcon);
+	QToolBar *toolbar = addToolBar(tr("Chipcoin top-logo"));
+	addToolBar(Qt::LeftToolBarArea,toolbar);
+    toolbar->setOrientation(Qt::Horizontal);
+    toolbar->setFloatable(false);
+    toolbar->setMovable(false);
+    toolbar->addWidget(mainIcon);
 
-    QToolBar *toolbar3 = addToolBar(tr("Side toolbar"));
-	addToolBar(Qt::LeftToolBarArea,toolbar3);
-    toolbar3->setOrientation(Qt::Vertical);
-	toolbar3->setFloatable(false);
-    toolbar3->setMovable(false);
-    toolbar3->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
-	toolbar3->addAction(overviewAction);
-    toolbar3->addAction(sendCoinsAction);
-    toolbar3->addAction(receiveCoinsAction);
-    toolbar3->addAction(historyAction);
-    toolbar3->addAction(addressBookAction);
-	toolbar3->addAction(statisticsAction);
-	toolbar3->addAction(multisendAction);	
-    toolbar3->addAction(blockAction);
-   	toolbar3->addAction(stakeReportAction);	
-	toolbar3->addAction(openRPCConsoleAction);
+    QToolBar *toolbar2 = addToolBar(tr("Side toolbar"));
+	addToolBar(Qt::LeftToolBarArea,toolbar2);
 	
+    toolbar2->setOrientation(Qt::Vertical);
+	toolbar2->setFloatable(false);
+    toolbar2->setMovable(false);
+    toolbar2->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
+	toolbar2->addAction(overviewAction);
+    toolbar2->addAction(sendCoinsAction);
+    toolbar2->addAction(receiveCoinsAction);
+    toolbar2->addAction(historyAction);
+    toolbar2->addAction(addressBookAction);
+	toolbar2->addAction(informationAction);
+	toolbar2->addAction(statisticsAction);	
+	toolbar2->addAction(multisendAction);
+	toolbar2->addAction(stakeReportAction);	
+    toolbar2->addAction(blockAction);	
 }
 
 void BitcoinGUI::setClientModel(ClientModel *clientModel)
@@ -461,19 +453,19 @@ void BitcoinGUI::setClientModel(ClientModel *clientModel)
         {
             setWindowTitle(windowTitle() + QString(" ") + tr("[testnet]"));
 #ifndef Q_OS_MAC
-            qApp->setWindowIcon(QIcon(":icons/bitcoin_testnet"));
-            setWindowIcon(QIcon(":icons/bitcoin_testnet"));
+            qApp->setWindowIcon(QIcon(":icons/chipcoin"));
+            setWindowIcon(QIcon(":icons/chipcoin"));
 #else
-            MacDockIconHandler::instance()->setIcon(QIcon(":icons/bitcoin_testnet"));
+            MacDockIconHandler::instance()->setIcon(QIcon(":icons/chipcoin"));
 #endif
             if(trayIcon)
             {
-                trayIcon->setToolTip(tr("WYTF client") + QString(" ") + tr("[testnet]"));
-                trayIcon->setIcon(QIcon(":/icons/toolbar_testnet"));
-                toggleHideAction->setIcon(QIcon(":/icons/toolbar_testnet"));
+                trayIcon->setToolTip(tr("Chipcoin core") + QString(" ") + tr("[testnet]"));
+                trayIcon->setIcon(QIcon(":/icons/toolbar"));
+                toggleHideAction->setIcon(QIcon(":/icons/toolbar"));
             }
 
-            aboutAction->setIcon(QIcon(":/icons/toolbar_testnet"));
+            aboutAction->setIcon(QIcon(":/icons/toolbar"));
         }
 
         // Keep up to date with client
@@ -531,7 +523,7 @@ void BitcoinGUI::createTrayIcon()
     trayIcon = new QSystemTrayIcon(this);
     trayIconMenu = new QMenu(this);
     trayIcon->setContextMenu(trayIconMenu);
-    trayIcon->setToolTip(tr("WYTF client"));
+    trayIcon->setToolTip(tr("Chipcoin core"));
     trayIcon->setIcon(QIcon(":/icons/toolbar"));
     connect(trayIcon, SIGNAL(activated(QSystemTrayIcon::ActivationReason)),
             this, SLOT(trayIconActivated(QSystemTrayIcon::ActivationReason)));
@@ -576,14 +568,6 @@ void BitcoinGUI::trayIconActivated(QSystemTrayIcon::ActivationReason reason)
 }
 #endif
 
-double GetStrength(uint64_t nWeight)
-{
-    double networkWeight = GetPoSKernelPS();
-    if (nWeight == 0 && networkWeight == 0)
-        return 0;
-    return nWeight / (static_cast<double>(nWeight) + networkWeight);
-}
-
 void BitcoinGUI::optionsClicked()
 {
     if(!clientModel || !clientModel->getOptionsModel())
@@ -600,36 +584,12 @@ void BitcoinGUI::aboutClicked()
     dlg.exec();
 }
 
+// Stake report dialog
 void BitcoinGUI::stakeReportClicked()
 {
    static StakeReportDialog dlg;
    dlg.setModel(walletModel);
    dlg.show();
-}
-
-void BitcoinGUI::resourcesWYTFClicked()
-{
-     QDesktopServices::openUrl(QUrl("https://wytf.co"));
-}
-
-void BitcoinGUI::resourcesCHAINClicked()
-{
-     QDesktopServices::openUrl(QUrl("https://explorer.wytf.co"));
-}
-
-void BitcoinGUI::resourcesTWITTERClicked()
-{
-     QDesktopServices::openUrl(QUrl("https://twitter.com/WYTFco"));
-}
-
-void BitcoinGUI::resourcesBTCTClicked()
-{
-     QDesktopServices::openUrl(QUrl("https://bitcointalk.org/index.php?topic=1511601.0"));
-}
-
-void BitcoinGUI::resourcesYOBITClicked()
-{
-     QDesktopServices::openUrl(QUrl("https://yobit.io/en/trade/WYTF/BTC"));
 }
 
 void BitcoinGUI::setNumConnections(int count)
@@ -644,26 +604,27 @@ void BitcoinGUI::setNumConnections(int count)
 	case 4: icon = ":/icons/connect_4"; break;
     case 5: icon = ":/icons/connect_5"; break;
     case 6: icon = ":/icons/connect_6"; break;
-	case 7: icon = ":/icons/connect_7"; break;
-    default: icon = ":/icons/connect_8"; break;
+	default: icon = ":/icons/connect_7"; break;
     }
-    labelConnectionsIcon->setPixmap(QIcon(icon).pixmap(28,54));
-    labelConnectionsIcon->setToolTip(tr("WYTF Network<br><br>Connections: <b>%n</b>", "", count));
+    labelConnectionsIcon->setPixmap(QIcon(icon).pixmap(32,32));
+    labelConnectionsIcon->setToolTip(tr("Chipcoin Network<br>Connections: <b>%n</b>", "", count));
 }
 
 void BitcoinGUI::setNumBlocks(int count, int nTotalBlocks)
 {
+	QString strStatusBarWarnings = clientModel->getStatusBarWarnings();
+    QString tooltip;
     // don't show / hide progress bar and its label if we have no connection to the network
     if (!clientModel || clientModel->getNumConnections() == 0)
     {
         progressBarLabel->setVisible(false);
         progressBar->setVisible(false);
-
+		labelBlocksIcon->setPixmap(QIcon(":/icons/nosync").pixmap(32,32));
+		tooltip = tr("You are not connected to the Chipcoin network");
         return;
     }
 
-    QString strStatusBarWarnings = clientModel->getStatusBarWarnings();
-    QString tooltip;
+    
 
     if(count < nTotalBlocks)
     {
@@ -680,7 +641,7 @@ void BitcoinGUI::setNumBlocks(int count, int nTotalBlocks)
             progressBar->setVisible(true);
         }
 
-        tooltip = tr("Synchronized: <b>%1 of %2 blocks</b><br><br>Progress: <b>%3%</b>").arg(count).arg(nTotalBlocks).arg(nPercentageDone, 0, 'f', 2);
+        tooltip = tr("Synchronized: %1 of %2 blocks<br><br>Progress: <b>%3%</b>").arg(count).arg(nTotalBlocks).arg(nPercentageDone, 0, 'f', 2);
     }
     else
     {
@@ -724,15 +685,24 @@ void BitcoinGUI::setNumBlocks(int count, int nTotalBlocks)
     {
         text = tr("%n Day(s) ago","",secs/(60*60*24));
     }
-
     // Set icon state: spinning if catching up, tick otherwise
     if(secs < 90*60 && count >= nTotalBlocks)
     {
         tooltip = tr("Status: <b>Synced</b>") + QString("<br>") + tooltip;
-        labelBlocksIcon->setPixmap(QIcon(":/icons/synced").pixmap(28,54));
+        labelBlocksIcon->setPixmap(QIcon(":/icons/synced").pixmap(32,32));
 
         overviewPage->showOutOfSyncWarning(false);
+		statisticsPage->showOutOfSyncWarning(false);
+		 if(GetBoolArg("-stats", true) && count > 0 && nTotalBlocks > 0)
+    {
+        statisticsPage->updatePlot();
+		statisticsPage->updatePlot2();			
     }
+	if(count > 0 && nTotalBlocks > 0)
+    {
+	overviewPage->updateOverview();
+	}
+    } 
     else
     {
         tooltip = tr("Status: <b>Synchronizing</b>") + QString("<br>") + tooltip;
@@ -740,11 +710,11 @@ void BitcoinGUI::setNumBlocks(int count, int nTotalBlocks)
         syncIconMovie->start();
 
         overviewPage->showOutOfSyncWarning(true);
+		statisticsPage->showOutOfSyncWarning(true);
     }
 
     if(!text.isEmpty())
     {
-        tooltip += QString("<br>");
         tooltip += tr("Last Block : <b>%1</b>").arg(text);
     }
 
@@ -755,11 +725,7 @@ void BitcoinGUI::setNumBlocks(int count, int nTotalBlocks)
     progressBarLabel->setToolTip(tooltip);
     progressBar->setToolTip(tooltip);
 
-    if(GetBoolArg("-chart", true) && count > 0 && nTotalBlocks > 0)
-    {
-        statisticsPage->updatePlot();		
-    }
-	overviewPage->updateOverview();
+   
 }
 
 void BitcoinGUI::updateStakingIcon()
@@ -775,27 +741,27 @@ void BitcoinGUI::updateStakingIcon()
 
     if (pwalletMain && pwalletMain->IsLocked())
     {
-        labelStakingIcon->setToolTip(tr("You are not staking:<br> <b>Your wallet is locked!</b><br><br>WYTF Network Weight: <b>%1</b><br><br>MultiSend: <b>%2</b>").arg(nNetworkWeight).arg(fMultiSend ? tr("Active"):tr("Inactive")));
+        labelStakingIcon->setToolTip(tr("You are not staking CHIP: <br><b>Your wallet is locked</b><br>Chipcoin Network Weight: <b>%1</b><br>MultiSend: <b>%2</b>").arg(nNetworkWeight).arg(fMultiSend ? tr("Active"):tr("Inactive")));
         labelStakingIcon->setEnabled(false);
-        labelStakingIcon->setPixmap(QIcon(":/icons/staking_off").pixmap(28,54));
+        labelStakingIcon->setPixmap(QIcon(":/icons/staking_off").pixmap(32,32));
     }
     else if (vNodes.empty())
     {
-        labelStakingIcon->setToolTip(tr("You are not staking:<br> <b>Your wallet is offline!</b><br><br>WYTF Network Weight: <b>%1</b><br><br>MultiSend: <b>%2</b>").arg(nNetworkWeight).arg(fMultiSend ? tr("Active"):tr("Inactive")));
+        labelStakingIcon->setToolTip(tr("You are not staking CHIP: <br><b>Your wallet is offline</b><br>Chipcoin Network Weight: <b>%1</b><br>MultiSend: <b>%2</b>").arg(nNetworkWeight).arg(fMultiSend ? tr("Active"):tr("Inactive")));
         labelStakingIcon->setEnabled(false);
-        labelStakingIcon->setPixmap(QIcon(":/icons/staking_off").pixmap(28,54));
+        labelStakingIcon->setPixmap(QIcon(":/icons/staking_off").pixmap(32,32));
     }
     else if (IsInitialBlockDownload())
     {
-        labelStakingIcon->setToolTip(tr("You are not staking:<br> <b>Your wallet is syncing with the WYTF network!</b><br><br>WYTF Network Weight: <b>%1</b><br><br>MultiSend: <b>%2</b>").arg(nNetworkWeight).arg(fMultiSend ? tr("Active"):tr("Inactive")));
+        labelStakingIcon->setToolTip(tr("You are not staking CHIP: <br><b>Your wallet is syncing</b><br>Chipcoin Network Weight: <b>%1</b><br>MultiSend: <b>%2</b>").arg(nNetworkWeight).arg(fMultiSend ? tr("Active"):tr("Inactive")));
         labelStakingIcon->setEnabled(false);
-        labelStakingIcon->setPixmap(QIcon(":/icons/staking_off").pixmap(28,54));
+        labelStakingIcon->setPixmap(QIcon(":/icons/staking_off").pixmap(32,32));
     }
     else if (!nWeight)
     {
-        labelStakingIcon->setToolTip(tr("You are not staking:<br> <b>You don't have mature coins!</b><br><br>WYTF Network Weight: <b>%1</b><br><br>MultiSend: <b>%2</b>").arg(nNetworkWeight).arg(fMultiSend ? tr("Active"):tr("Inactive")));
+        labelStakingIcon->setToolTip(tr("You are not staking CHIP: <br><b>Coins not matured</b><br>Chipcoin Network Weight: <b>%1</b><br>MultiSend: <b>%2</b>").arg(nNetworkWeight).arg(fMultiSend ? tr("Active"):tr("Inactive")));
         labelStakingIcon->setEnabled(false);
-        labelStakingIcon->setPixmap(QIcon(":/icons/staking_off").pixmap(28,54));
+        labelStakingIcon->setPixmap(QIcon(":/icons/staking_off").pixmap(32,32));
     }
     else if (nLastCoinStakeSearchInterval)
     {	
@@ -822,16 +788,15 @@ void BitcoinGUI::updateStakingIcon()
             text = tr("%1 - %2 Days").arg(nRangeLow / (60*60*24)).arg(nRangeHigh / (60*60*24));
         }
 
-        labelStakingIcon->setPixmap(QIcon(":/icons/staking_on").pixmap(28,54));
+        labelStakingIcon->setPixmap(QIcon(":/icons/staking_on").pixmap(32,32));
         labelStakingIcon->setEnabled(true);
-		labelStakingIcon->setToolTip(tr("No issues detected:<br> <b>You are staking!</b><br><br>WYTF Network Weight: <b>%1</b><br><br>My Wallet Weight: <b>%2</b><br><br>Estimated Next Stake: <b>%4</b><br><br>MultiSend: <b>%5</b>").arg(nNetworkWeight).arg(nWeight).arg(text).arg(fMultiSend ? tr("Active"):tr("Inactive")));
-		statisticsPage->setStrength(GetStrength(nWeight));
+        labelStakingIcon->setToolTip(tr("<b>You are staking CHIP!</b><br>Chipcoin Network Weight: <b>%1</b><br>My Wallet Weight: <b>%2</b><br>Estimated Next Stake: <b>%4</b><br>MultiSend: <b>%5</b>").arg(nNetworkWeight).arg(nWeight).arg(text).arg(fMultiSend ? tr("Active"):tr("Inactive")));
     }
     else
     {
-        labelStakingIcon->setToolTip(tr("You are not staking!<br><br>WYTF Network Weight: <b>%1</b>").arg(nNetworkWeight));
+        labelStakingIcon->setToolTip(tr("You are not staking CHIP.<br>Chipcoin Network Weight: <b>%1</b>").arg(nNetworkWeight));
         labelStakingIcon->setEnabled(false);
-        labelStakingIcon->setPixmap(QIcon(":/icons/staking_off").pixmap(28,54));
+        labelStakingIcon->setPixmap(QIcon(":/icons/staking_off").pixmap(32,32));
     }
 	
 }
@@ -1075,6 +1040,15 @@ void BitcoinGUI::gotoVerifyMessageTab(QString addr)
         signVerifyMessageDialog->setAddress_VM(addr);
 }
 
+void BitcoinGUI::gotoInFormationPage()
+{
+    informationAction->setChecked(true);
+    centralWidget->setCurrentWidget(informationPage);
+
+    exportAction->setEnabled(false);
+    disconnect(exportAction, SIGNAL(triggered()), 0, 0);
+}
+
 void BitcoinGUI::dragEnterEvent(QDragEnterEvent *event)
 {
     // Accept only URIs
@@ -1098,7 +1072,7 @@ void BitcoinGUI::dropEvent(QDropEvent *event)
         if (nValidUrisFound)
             gotoSendCoinsPage();
         else
-            notificator->notify(Notificator::Warning, tr("URI handling"), tr("URI can not be parsed! This can be caused by an invalid WYTF address or malformed URI parameters."));
+            notificator->notify(Notificator::Warning, tr("URI handling"), tr("URI can not be parsed! This can be caused by an invalid Chipcoin address or malformed URI parameters."));
     }
 
     event->acceptProposedAction();
@@ -1113,7 +1087,7 @@ void BitcoinGUI::handleURI(QString strURI)
         gotoSendCoinsPage();
     }
     else
-        notificator->notify(Notificator::Warning, tr("URI handling"), tr("URI can not be parsed! This can be caused by an invalid WYTF address or malformed URI parameters."));
+        notificator->notify(Notificator::Warning, tr("URI handling"), tr("URI can not be parsed! This can be caused by an invalid Chipcoin address or malformed URI parameters."));
 }
 
 void BitcoinGUI::setEncryptionStatus(int status)
@@ -1121,9 +1095,9 @@ void BitcoinGUI::setEncryptionStatus(int status)
     switch(status)
     {
     case WalletModel::Unencrypted:
-        labelEncryptionIcon->show();
-		labelEncryptionIcon->setPixmap(QIcon(":/icons/not_encrypted").pixmap(28,54));
-        labelEncryptionIcon->setToolTip(tr("Your wallet is <b>not encrypted</b> and currently <b>unlocked</b>!<br><br>It is highly recommended to encrypt your wallet for safety purposes."));
+        labelEncryptionIcon->hide();;
+		labelEncryptionIcon->setPixmap(QIcon(":/icons/not_encrypted").pixmap(32,32));
+        labelEncryptionIcon->setToolTip(tr("Your wallet is <b>not encrypted</b> and currently <b>unlocked</b>!"));
         encryptWalletAction->setChecked(false);
         changePassphraseAction->setEnabled(false);
         unlockWalletAction->setVisible(false);
@@ -1132,7 +1106,7 @@ void BitcoinGUI::setEncryptionStatus(int status)
         break;
     case WalletModel::Unlocked:
         labelEncryptionIcon->show();
-        labelEncryptionIcon->setPixmap(QIcon(":/icons/lock_open_toolbar").pixmap(28,54));
+        labelEncryptionIcon->setPixmap(QIcon(":/icons/lock_open_toolbar").pixmap(32,32));
         labelEncryptionIcon->setToolTip(tr("Your wallet is <b>encrypted</b> and currently <b>unlocked</b>."));
         encryptWalletAction->setChecked(true);
         changePassphraseAction->setEnabled(true);
@@ -1142,7 +1116,7 @@ void BitcoinGUI::setEncryptionStatus(int status)
         break;
     case WalletModel::Locked:
         labelEncryptionIcon->show();
-        labelEncryptionIcon->setPixmap(QIcon(":/icons/lock_closed_toolbar").pixmap(28,54));
+        labelEncryptionIcon->setPixmap(QIcon(":/icons/lock_closed_toolbar").pixmap(32,32));
         labelEncryptionIcon->setToolTip(tr("Your wallet is <b>encrypted</b> and currently <b>locked</b>"));
         encryptWalletAction->setChecked(true);
         changePassphraseAction->setEnabled(true);
@@ -1240,10 +1214,10 @@ void BitcoinGUI::updateStyleSlot()
 
 void BitcoinGUI::updateStyle()
 {
-    if (!fUseWYTFTheme)
+    if (!fUseChipcoinTheme)
         return;
 
-    QString qssPath = QString::fromStdString( GetDataDir().string() ) + "/WYTF_v1.0.0.2.qss";
+    QString qssPath = QString::fromStdString( GetDataDir().string() ) + "/chipcoin.qss";
 
     QFile f( qssPath );
 
@@ -1264,7 +1238,7 @@ void BitcoinGUI::writeDefaultStyleSheet(const QString &qssPath)
 {
     qDebug() << "writing default style sheet";
 
-    QFile qss( ":/text/stylesheet" );
+    QFile qss( ":/qss/stylesheet" );
     qss.open( QFile::ReadOnly );
 
     QFile f( qssPath );

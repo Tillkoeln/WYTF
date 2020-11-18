@@ -1,6 +1,6 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2016 The Bitcoin developers
-// Copyright (c) 2019 The WYTF Foundation
+// Copyright (c) 2016 The Chipcoin developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -41,15 +41,15 @@ CBigNum bnProofOfStakeLimit(~uint256(0) >> 20);
 CBigNum bnProofOfWorkLimitTestNet(~uint256(0) >> 16);
 
 static const int64_t nTargetTimespan = 60 * 60;
-unsigned int nTargetSpacing = 3 * 60; 
+unsigned int nTargetSpacing = 2 * 60; 
 static const int64_t nInterval = nTargetTimespan / nTargetSpacing;
 static const int64_t nDiffChangeTarget = 1;
 
-unsigned int nStakeMinAge = 4 * 60 * 60; 
-unsigned int nStakeMaxAge = 101 * 24 * 60 * 60;
+unsigned int nStakeMinAge = 2 * 60 * 60; 
+unsigned int nStakeMaxAge = 300 * 24 * 60 * 60;
 unsigned int nModifierInterval = 10 * 60;
 
-int nCoinbaseMaturity = 16;
+int nCoinbaseMaturity = 20;
 CBlockIndex* pindexGenesisBlock = NULL;
 int nBestHeight = -1;
 
@@ -72,7 +72,7 @@ map<uint256, set<uint256> > mapOrphanTransactionsByPrev;
 // Constant stuff for coinbase transactions we create:
 CScript COINBASE_FLAGS;
 
-const string strMessageMagic = "WYTF Signed Message:\n";
+const string strMessageMagic = "Chipcoin Signed Message:\n";
 
 // Settings
 int64_t nTransactionFee = MIN_TX_FEE;
@@ -946,20 +946,49 @@ uint256 WantedByOrphan(const CBlock* pblockOrphan)
     return pblockOrphan->hashPrevBlock;
 }
 
-// miner's coin base reward
 int64_t GetProofOfWorkReward(int64_t nFees) 
 {
     int64_t nSubsidy = 0 * COIN;
     
     if (pindexBest->nHeight+1 == 1) 
     {
-      nSubsidy = 777777 * COIN;
+      nSubsidy = 10000000 * COIN; // 5 000 000 ICO - 5 000 000 SWAP
       return nSubsidy + nFees;
     }
     
-    else if (pindexBest->nHeight+1 < 10000)
+	else if (pindexBest->nHeight+1 < 30000)
     {
-      nSubsidy = 0 * COIN;
+      nSubsidy = 0.1 * COIN;
+      return nSubsidy + nFees;
+    }
+	
+	else if (pindexBest->nHeight+1 < 130000)
+    {
+      nSubsidy = 16.00 * COIN;  //1 600 000
+      return nSubsidy + nFees;
+    }
+	
+	else if (pindexBest->nHeight+1 < 230000)
+    {
+      nSubsidy = 8.00 * COIN;  //800 000
+      return nSubsidy + nFees;
+    }
+	
+	else if (pindexBest->nHeight+1 < 330000)
+    {
+      nSubsidy = 4.00 * COIN;  //400 000
+      return nSubsidy + nFees;
+    }
+	
+	else if (pindexBest->nHeight+1 < 430000)
+    {
+      nSubsidy = 2.00 * COIN;  //200 000
+      return nSubsidy + nFees;
+    }
+	
+	else if (pindexBest->nHeight+1 < 999999999)
+    {
+      nSubsidy = 1.00 * COIN; // Ongoing PoW
       return nSubsidy + nFees;
     }
 	
@@ -969,23 +998,36 @@ int64_t GetProofOfWorkReward(int64_t nFees)
     return nSubsidy + nFees;
 }
 
-// miner's coin stake reward based on coin age spent (coin-days)
-int64_t GetProofOfStakeReward(int64_t nCoinAge, int64_t nFees)
+int64_t GetProofOfStakeReward(uint64_t nCoinAge, int64_t nFees, unsigned int nGrowth)
 {
-    int64_t nSubsidy = 0 * COIN;
-
-    if (pindexBest->nHeight < 10001)
-    {
-        nSubsidy = 0.15 * COIN;
-        return nSubsidy + nFees;
-    }
+    int64_t nSubsidy = 0.01 * COIN;
+	unsigned int nCycle = 60 * 60 * 24;
 	
-    else if (pindexBest->nHeight > 10000)
-    {
-        nSubsidy = 0.25 * COIN;
-        return nSubsidy + nFees;
-    }
-
+	if(nGrowth > nCycle * 120)		// 120 days
+	{
+		nSubsidy = 120.00 * COIN;  	// ~ 1.00 CHIP per day
+	}		
+	else if(nGrowth > nCycle * 90)	// 90 days
+	{
+		nSubsidy = 67.50 * COIN; 	// ~ 0.75 CHIP per day
+	}
+	else if(nGrowth > nCycle * 60) 	// 60 days
+	{
+		nSubsidy = 30.00 * COIN; 	// ~ 0.5 CHIP per day
+	}
+	else if(nGrowth > nCycle * 30) 	// 30 days
+	{
+		nSubsidy = 7.50 * COIN; 	// ~ 0.25 CHIP per day
+	}
+	else if(nGrowth > nCycle * 10) 	// 10 days
+	{
+		nSubsidy = 1.50 * COIN;  	// ~ 0.15 CHIP per day		
+	}
+	else 
+	{
+		nSubsidy = 0.01 * COIN; // regular
+	}
+	
     if (fDebug && GetBoolArg("-printcreation"))
         printf("GetProofOfStakeReward(): create=%s nCoinAge=%"PRId64"\n", FormatMoney(nSubsidy).c_str(), nCoinAge);
 
@@ -1553,10 +1595,11 @@ bool CBlock::ConnectBlock(CTxDB& txdb, CBlockIndex* pindex, bool fJustCheck)
     {
         // ppcoin: coin stake tx earns reward instead of paying fee
         uint64_t nCoinAge;
-        if (!vtx[1].GetCoinAge(txdb, nCoinAge))
+		unsigned int nGrowth;
+        if (!vtx[1].GetCoinAge(txdb, nCoinAge, nGrowth))
             return error("ConnectBlock() : %s unable to get coin age for coinstake", vtx[1].GetHash().ToString().substr(0,10).c_str());
 
-        int64_t nCalculatedStakeReward = GetProofOfStakeReward(nCoinAge, nFees);
+        int64_t nCalculatedStakeReward = GetProofOfStakeReward(nCoinAge, nFees, nGrowth);
 
         if (nStakeReward > nCalculatedStakeReward)
             return DoS(100, error("ConnectBlock() : coinstake pays too much(actual=%"PRId64" vs calculated=%"PRId64")", nStakeReward, nCalculatedStakeReward));
@@ -1844,10 +1887,11 @@ bool CBlock::SetBestChain(CTxDB& txdb, CBlockIndex* pindexNew)
 // guaranteed to be in main chain by sync-checkpoint. This rule is
 // introduced to help nodes establish a consistent view of the coin
 // age (trust score) of competing branches.
-bool CTransaction::GetCoinAge(CTxDB& txdb, uint64_t& nCoinAge) const
+bool CTransaction::GetCoinAge(CTxDB& txdb, uint64_t& nCoinAge, unsigned int& nGrowth) const
 {
     CBigNum bnCentSecond = 0;  // coin age in the unit of cent-seconds
     nCoinAge = 0;
+	nGrowth = 0;
 
     if (IsCoinBase())
         return true;
@@ -1871,9 +1915,15 @@ bool CTransaction::GetCoinAge(CTxDB& txdb, uint64_t& nCoinAge) const
 
         int64_t nValueIn = txPrev.vout[txin.prevout.n].nValue;
         bnCentSecond += CBigNum(nValueIn) * (nTime-txPrev.nTime) / CENT;
+		
+		if(nGrowth == 0)
+			nGrowth = nTime - txPrev.nTime;
+		else if(nTime - txPrev.nTime < (unsigned int)nGrowth) //use the lowest age in the transaction to determine the age
+			nGrowth = nTime - txPrev.nTime;
+			
 
         if (fDebug && GetBoolArg("-printcoinage"))
-            printf("coin age nValueIn=%"PRId64" nTimeDiff=%d bnCentSecond=%s\n", nValueIn, nTime - txPrev.nTime, bnCentSecond.ToString().c_str());
+            printf("coin age nValueIn=%"PRId64" nTimeDiff=%d nGrowth=%d bnCentSecond=%s\n", nValueIn, nTime - txPrev.nTime, nGrowth, bnCentSecond.ToString().c_str());
     }
 
     CBigNum bnCoinDay = bnCentSecond * CENT / (24 * 60 * 60);
@@ -1892,7 +1942,8 @@ bool CBlock::GetCoinAge(uint64_t& nCoinAge) const
     BOOST_FOREACH(const CTransaction& tx, vtx)
     {
         uint64_t nTxCoinAge;
-        if (tx.GetCoinAge(txdb, nTxCoinAge))
+		unsigned int nGrowth;
+        if (tx.GetCoinAge(txdb, nTxCoinAge, nGrowth))
             nCoinAge += nTxCoinAge;
         else
             return false;
@@ -2383,7 +2434,7 @@ bool CheckDiskSpace(uint64_t nAdditionalBytes)
         string strMessage = _("Warning: Disk space is low!");
         strMiscWarning = strMessage;
         printf("*** %s\n", strMessage.c_str());
-        uiInterface.ThreadSafeMessageBox(strMessage, "WYTF", CClientUIInterface::OK | CClientUIInterface::ICON_EXCLAMATION | CClientUIInterface::MODAL);
+        uiInterface.ThreadSafeMessageBox(strMessage, "Chipcoin", CClientUIInterface::OK | CClientUIInterface::ICON_EXCLAMATION | CClientUIInterface::MODAL);
         StartShutdown();
         return false;
     }
@@ -2454,9 +2505,9 @@ if (mapBlockIndex.empty())
         if (!fAllowNew)
             return false;
 
-        const char* pszTimestamp = "WYTF Genesis Was Generated - 20th of February 2019 - Ethereum Mining Pool Receives Mysterious $300K Blockchain Payout";
+        const char* pszTimestamp = "$1bn seized from Silk Road account by US government"; //https://www.bbc.com/news/technology-54833130
         CTransaction txNew;
-        txNew.nTime = 1550676679;
+        txNew.nTime = 1604676443;
         txNew.vin.resize(1);
         txNew.vout.resize(1);
         txNew.vin[0].scriptSig = CScript() << 0 << CBigNum(42) << vector<unsigned char>((const unsigned char*)pszTimestamp, (const unsigned char*)pszTimestamp + strlen(pszTimestamp));
@@ -2466,23 +2517,19 @@ if (mapBlockIndex.empty())
         block.hashPrevBlock = 0;
         block.hashMerkleRoot = block.BuildMerkleTree();
         block.nVersion = 1;
-        block.nTime    = 1550676679;
+        block.nTime    = 1604676443;
         block.nBits    = bnProofOfWorkLimit.GetCompact();
-        block.nNonce   = 1088964;		
-		
+        block.nNonce   = 1184597;
 		if(fTestNet)
         {
             block.nNonce   = 0;
         }
-
         block.print();
         printf("block.GetHash() == %s\n", block.GetHash().ToString().c_str());
         printf("block.hashMerkleRoot == %s\n", block.hashMerkleRoot.ToString().c_str());
         printf("block.nTime = %u \n", block.nTime);
         printf("block.nNonce = %u \n", block.nNonce);
-
-        assert(block.hashMerkleRoot == uint256("0xfce22a1f0fde1cc3b274872229b86b615f3c37cc43f07a8cc263b9ccb05cfad9"));
-        
+        assert(block.hashMerkleRoot == uint256("0xe457b104eb68916ad09a46b58dc76420379ddc7ca9ced3c8cb6dd3d5959edf09"));        
 		block.print();
         assert(block.GetHash() == (!fTestNet ? hashGenesisBlock : hashGenesisBlockTestNet));
         assert(block.CheckBlock());
@@ -2740,7 +2787,7 @@ bool static AlreadyHave(CTxDB& txdb, const CInv& inv)
 // The message start string is designed to be unlikely to occur in normal data.
 // The characters are rarely used upper ASCII, not valid as UTF-8, and produce
 // a large 4-byte int at any alignment.
-unsigned char pchMessageStart[4] = { 0xc3, 0xc5, 0xa2, 0xa3 };
+unsigned char pchMessageStart[4] = { 0xb1, 0xc2, 0xc4, 0xa2 };
 
 bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv)
 {

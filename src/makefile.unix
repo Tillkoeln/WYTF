@@ -104,17 +104,23 @@ xCXXFLAGS=-O2 $(EXT_OPTIONS) -pthread -Wall -Wextra -Wformat -Wformat-security -
 xLDFLAGS=$(LDHARDENING) $(LDFLAGS)
 
 OBJS= \
-   obj/groestl.o \
-    obj/blake.o \
-    obj/bmw.o \
-    obj/skein.o \
-    obj/keccak.o \
-    obj/shavite.o \
-    obj/jh.o \
-    obj/luffa.o \
     obj/cubehash.o \
+    obj/luffa.o \
     obj/echo.o \
+    obj/shavite.o \
     obj/simd.o \
+    obj/blake.o\
+    obj/bmw.o\
+    obj/groestl.o\
+    obj/jh.o\
+    obj/keccak.o\
+    obj/skein.o \
+    obj/hamsi.o \
+    obj/fugue.o \
+    obj/shabal.o \
+    obj/whirlpool.o \
+    obj/sha2big.o \
+    obj/haval.o \
     obj/alert.o \
     obj/version.o \
     obj/checkpoints.o \
@@ -150,7 +156,7 @@ OBJS= \
     obj/scrypt-x86.o \
     obj/scrypt-x86_64.o 
 
-all: wytfd
+all: chipcoind
 
 LIBS += $(CURDIR)/leveldb/libleveldb.a $(CURDIR)/leveldb/libmemenv.a
 DEFS += $(addprefix -I,$(CURDIR)/leveldb/include)
@@ -191,11 +197,11 @@ obj/%.o: %.cpp
 	      -e '/^$$/ d' -e 's/$$/ :/' < $(@:%.o=%.d) >> $(@:%.o=%.P); \
 	  rm -f $(@:%.o=%.d)
 
-wytfd: $(OBJS:obj/%=obj/%)
+chipcoind: $(OBJS:obj/%=obj/%)
 	$(LINK) $(xCXXFLAGS) -o $@ $^ $(xLDFLAGS) $(LIBS)
 
 clean:
-	-rm -f wytfd
+	-rm -f chipcoind
 	-rm -f obj/*.o
 	-rm -f obj/*.P
 	-rm -f obj/build.h

@@ -19,7 +19,7 @@ class RPCConsole;
 class StatisticsPage;
 class BlockBrowser;
 class MultisendDialog;
-class ChatWindow;
+class InFormation;
 
 QT_BEGIN_NAMESPACE
 class QLabel;
@@ -72,6 +72,7 @@ private:
     AddressBookPage *receiveCoinsPage;
     SendCoinsDialog *sendCoinsPage;
     SignVerifyMessageDialog *signVerifyMessageDialog;
+	InFormation *informationPage;
     
 	QLabel *mainIcon;    
 	QLabel *labelEncryptionIcon;
@@ -102,13 +103,9 @@ private:
     QAction *aboutQtAction;
     QAction *openRPCConsoleAction;
     QAction *blockAction;
-	QAction *stakeReportAction;	
+	QAction *informationAction;
+	QAction *stakeReportAction;
 	QAction *multisendAction;
-	QAction *resourcesWYTFAction;
-	QAction *resourcesCHAINAction;
-	QAction *resourcesTWITTERAction;	
-	QAction *resourcesBTCTAction;
-	QAction *resourcesYOBITAction;	
 
 	QAction *statisticsAction;
 	QAction *checkWalletAction;
@@ -176,6 +173,8 @@ private slots:
     void gotoSendCoinsPage();
     /** Show block explorer page */
     void gotoBlockBrowser(QString transactionId = "");
+	/** Show social page */
+	void gotoInFormationPage();
     /** Show Sign/Verify Message dialog and switch to sign message tab */
     void gotoSignMessageTab(QString addr = "");
     /** Show Sign/Verify Message dialog and switch to verify message tab */
@@ -188,13 +187,6 @@ private slots:
     void optionsClicked();
     /** Show about dialog */
     void aboutClicked();
-	
-	void resourcesWYTFClicked();	
-	void resourcesCHAINClicked();	
-	void resourcesTWITTERClicked();
-	void resourcesBTCTClicked();
-	void resourcesYOBITClicked();
-	
 #ifndef Q_OS_MAC
     /** Handle tray icon clicked */
     void trayIconActivated(QSystemTrayIcon::ActivationReason reason);
@@ -221,7 +213,8 @@ private slots:
 	/** Check the wallet */
 	void checkWallet();
 	/** Repair the wallet */
-	void repairWallet(); 
+	void repairWallet();
+ 
 
     /** Show window if hidden, unminimize when minimized, rise when obscured or show if hidden and fToggleHidden is true */
     void showNormalIfMinimized(bool fToggleHidden = false);
@@ -229,7 +222,6 @@ private slots:
     void toggleHidden();
     
     void updateStakingIcon();
-	//void multisendClicked(QString addr = "");
     void updateStyleSlot();
 };
 

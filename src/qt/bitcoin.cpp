@@ -81,7 +81,7 @@ static void ThreadSafeHandleURI(const std::string& strURI)
 
 static void InitMessage(const std::string &message)
 {
-    if(splashref)
+   if(splashref)
     {
         splashref->label->setText(QString::fromStdString(message));//showMessage(QString::fromStdString(message), Qt::AlignBottom|Qt::AlignHCenter, QColor(55,55,55));
         qApp->processEvents();
@@ -107,7 +107,7 @@ static std::string Translate(const char* psz)
 static void handleRunawayException(std::exception *e)
 {
     PrintExceptionContinue(e, "Runaway exception");
-    QMessageBox::critical(0, "Runaway exception", BitcoinGUI::tr("A fatal error occurred. WYTF can no longer continue safely and will quit.") + QString("\n\n") + QString::fromStdString(strMiscWarning));
+    QMessageBox::critical(0, "Runaway exception", BitcoinGUI::tr("A fatal error occurred. Chipcoin can no longer continue safely and will quit.") + QString("\n\n") + QString::fromStdString(strMiscWarning));
     exit(1);
 }
 
@@ -137,7 +137,7 @@ int main(int argc, char *argv[])
     {
         // This message can not be translated, as translation is not initialized yet
         // (which not yet possible because lang=XX can be overridden in bitcoin.conf in the data directory)
-        QMessageBox::critical(0, "WYTF",
+        QMessageBox::critical(0, "Chipcoin",
                               QString("Error: Specified data directory \"%1\" does not exist.").arg(QString::fromStdString(mapArgs["-datadir"])));
         return 1;
     }
@@ -145,12 +145,12 @@ int main(int argc, char *argv[])
 
     // Application identification (must be set before OptionsModel is initialized,
     // as it is used to locate QSettings)
-    app.setOrganizationName("WYTF");
+    app.setOrganizationName("Chipcoin");
     //XXX app.setOrganizationDomain("");
     if(GetBoolArg("-testnet")) // Separate UI settings for testnet
-        app.setApplicationName("WYTF-Qt-testnet");
+        app.setApplicationName("Chipcoin-Qt-testnet");
     else
-        app.setApplicationName("WYTF-Qt");
+        app.setApplicationName("Chipcoin-Qt");
 
     // ... then GUI settings:
     OptionsModel optionsModel;
@@ -227,7 +227,7 @@ int main(int argc, char *argv[])
                 // Put this in a block, so that the Model objects are cleaned up before
                 // calling Shutdown().
 
-                if (splashref)
+                 if (splashref)
                     splash.close();
 
                 ClientModel clientModel(&optionsModel);

@@ -37,7 +37,7 @@ SendCoinsDialog::SendCoinsDialog(QWidget *parent) :
 
 #if QT_VERSION >= 0x040700
     /* Do not move this to the XML file, Qt before 4.7 will choke on it */
-    ui->lineEditCoinControlChange->setPlaceholderText(tr("Enter a WYTF address (e.g. WYTFwwuDea7ejXRdmgNKj4A2SWJ39SRNX3)"));
+    ui->lineEditCoinControlChange->setPlaceholderText(tr("Chipcoin address"));
     ui->splitBlockLineEdit->setPlaceholderText(tr("# of Blocks to Make"));
 #endif
 
@@ -185,17 +185,24 @@ void SendCoinsDialog::on_sendButton_clicked()
 #else
         formatted.append(tr("<b>%1</b> to %2 (%3)").arg(BitcoinUnits::formatWithUnit(BitcoinUnits::BTC, rcp.amount), rcp.label.toHtmlEscaped(), rcp.address));
 #endif
-		} 
+		}
+		else if(rcp.amount / nSplitBlock < 100 * COIN)
+		{
+			QMessageBox::warning(this, tr("Send Coins"),
+				tr("Staking Optimizer outputs need to be over 100 CHIP per output."),
+				QMessageBox::Ok, QMessageBox::Ok);
+			return;
+		}		
 		else 
 		{ 
 #if QT_VERSION < 0x050000 
-        formatted.append(tr("<b>%1</b> in %4 blocks of %5 WYTF each to %2 (%3)?").arg(BitcoinUnits::formatWithUnit(BitcoinUnits::BTC, rcp.amount),  
+        formatted.append(tr("<b>%1</b> in %4 blocks of %5 CHIP each to %2 (%3)?").arg(BitcoinUnits::formatWithUnit(BitcoinUnits::BTC, rcp.amount),  
 			Qt::escape(rcp.label),  
 			rcp.address,  
 			QString::number(nSplitBlock),  
 			BitcoinUnits::formatWithUnit(BitcoinUnits::BTC, rcp.amount / nSplitBlock)));
 #else 
-        formatted.append(tr("<b>%1</b> in %4 blocks of %5 WYTF each to %2 (%3)?").arg(BitcoinUnits::formatWithUnit(BitcoinUnits::BTC, rcp.amount),  
+        formatted.append(tr("<b>%1</b> in %4 blocks of %5 CHIP each to %2 (%3)?").arg(BitcoinUnits::formatWithUnit(BitcoinUnits::BTC, rcp.amount),  
 			rcp.label.toHtmlEscaped(),  
 			rcp.address,  
 			QString::number(nSplitBlock),  
@@ -582,7 +589,7 @@ void SendCoinsDialog::coinControlChangeEdited(const QString & text)
         else if (!CBitcoinAddress(text.toStdString()).IsValid())
         {
             ui->labelCoinControlChangeLabel->setStyleSheet("QLabel{color:red;}");
-            ui->labelCoinControlChangeLabel->setText(tr("WARNING: Invalid WYTF address"));
+            ui->labelCoinControlChangeLabel->setText(tr("WARNING: Invalid Chipcoin address"));
         }
         else
         {
